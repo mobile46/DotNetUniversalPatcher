@@ -14,13 +14,13 @@ namespace DotNetUniversalPatcher.UI
     {
         internal static FrmAddTarget Instance = new FrmAddTarget();
 
-        public static List<OpCode> OpCodes;
+        private static List<OpCode> _opCodes;
+
+        private int _selectedActionMethod;
+        private int _selectedInstructionIndex;
+        private OpCode _selectedOpCode;
 
         internal int SelectedTargetId;
-
-        internal int SelectedActionMethod;
-        internal int SelectedInstructionIndex;
-        internal OpCode SelectedOpCode;
 
         public FrmAddTarget()
         {
@@ -40,7 +40,7 @@ namespace DotNetUniversalPatcher.UI
             if (cmbOpCodes.Items.Count == 0)
             {
                 LoadOpCodes();
-                cmbOpCodes.Items.AddRange(OpCodes.ToArray());
+                cmbOpCodes.Items.AddRange(_opCodes.ToArray());
             }
 
             txtFullName.Text = string.Empty;
@@ -68,6 +68,10 @@ namespace DotNetUniversalPatcher.UI
                 {
                     cmbActionMethod.SelectedIndex = (int)target.Action;
                 }
+                else
+                {
+                    cmbActionMethod.SelectedIndex = -1;
+                }
 
                 switch (target.Optional?.ToLowerInvariant())
                 {
@@ -88,21 +92,21 @@ namespace DotNetUniversalPatcher.UI
                 {
                     var ilCode = target.ILCodes?[i];
 
-                    dgvInstructions.Rows.Add(target.Indices?.Count > 0 ? target.Indices[i] : string.Empty as object, ilCode?.OpCode, ilCode?.Operand);
+                    dgvInstructions.Rows.Add(target.Indices?.Count > 0 ? target.Indices[i] : string.Empty, ilCode.OpCode, ilCode.Operand);
                 }
             }
         }
 
         private void BtnAddTarget_Click(object sender, EventArgs e)
         {
-            if (SelectedActionMethod == -1)
+            if (_selectedActionMethod == -1)
             {
                 Helpers.CustomMessageBox("Action Method is empty!");
                 cmbActionMethod.Focus();
                 return;
             }
 
-            switch (SelectedActionMethod)
+            switch (_selectedActionMethod)
             {
                 case (int)ActionMethod.Insert:
                 case (int)ActionMethod.Replace:
@@ -119,7 +123,7 @@ namespace DotNetUniversalPatcher.UI
                     }
             }
 
-            switch (SelectedActionMethod)
+            switch (_selectedActionMethod)
             {
                 case (int)ActionMethod.Patch:
                 case (int)ActionMethod.Insert:
@@ -140,12 +144,12 @@ namespace DotNetUniversalPatcher.UI
             {
                 string[] cells = new string[3];
 
-                cells[0] = txtIndex.Text != string.Empty ? txtIndex.Text : string.Empty;
-                cells[1] = cmbOpCodes.Text != string.Empty ? cmbOpCodes.Text : string.Empty;
+                cells[0] = txtIndex.Text.EmptyIfNull();
+                cells[1] = cmbOpCodes.Text.EmptyIfNull();
 
-                if (SelectedOpCode != null)
+                if (_selectedOpCode != null)
                 {
-                    switch (SelectedOpCode.OperandType)
+                    switch (_selectedOpCode.OperandType)
                     {
                         case OperandType.InlineNone:
                         case OperandType.InlinePhi:
@@ -154,7 +158,7 @@ namespace DotNetUniversalPatcher.UI
                             break;
 
                         default:
-                            cells[2] = txtOperand.Text;
+                            cells[2] = txtOperand.Text.EmptyIfNull();
                             break;
                     }
                 }
@@ -163,21 +167,21 @@ namespace DotNetUniversalPatcher.UI
             }
             else if (btnAddTarget.Text == "Update")
             {
-                dgvInstructions.Rows[SelectedInstructionIndex].Cells[0].Value = txtIndex.Text;
-                dgvInstructions.Rows[SelectedInstructionIndex].Cells[1].Value = cmbOpCodes.Text;
+                dgvInstructions.Rows[_selectedInstructionIndex].Cells[0].Value = txtIndex.Text.EmptyIfNull();
+                dgvInstructions.Rows[_selectedInstructionIndex].Cells[1].Value = cmbOpCodes.Text.EmptyIfNull();
 
-                if (SelectedOpCode != null)
+                if (_selectedOpCode != null)
                 {
-                    switch (SelectedOpCode.OperandType)
+                    switch (_selectedOpCode.OperandType)
                     {
                         case OperandType.InlineNone:
                         case OperandType.InlinePhi:
                         case OperandType.NOT_USED_8:
-                            dgvInstructions.Rows[SelectedInstructionIndex].Cells[2].Value = string.Empty;
+                            dgvInstructions.Rows[_selectedInstructionIndex].Cells[2].Value = string.Empty;
                             break;
 
                         default:
-                            dgvInstructions.Rows[SelectedInstructionIndex].Cells[2].Value = txtOperand.Text;
+                            dgvInstructions.Rows[_selectedInstructionIndex].Cells[2].Value = txtOperand.Text.EmptyIfNull();
                             break;
                     }
                 }
@@ -208,7 +212,7 @@ namespace DotNetUniversalPatcher.UI
                 return;
             }
 
-            if (SelectedActionMethod == (int)ActionMethod.ReturnBody && cmbOptional.SelectedIndex == -1)
+            if (_selectedActionMethod == (int)ActionMethod.ReturnBody && cmbOptional.SelectedIndex == -1)
             {
                 Helpers.CustomMessageBox("Optional is empty!");
                 cmbOptional.Focus();
@@ -218,12 +222,12 @@ namespace DotNetUniversalPatcher.UI
             var selectedPatchIndex = FrmScriptEditor.Instance.cmbPatchList.SelectedIndex;
 
             List<ILCode> ilCodes = new List<ILCode>();
-            List<object> indices = new List<object>();
+            List<string> indices = new List<string>();
 
             foreach (DataGridViewRow dgvInstructionsRow in dgvInstructions.Rows)
             {
-                indices.Add(dgvInstructionsRow.Cells[0].Value == null ? string.Empty : dgvInstructionsRow.Cells[0].Value.ToString());
-                ilCodes.Add(new ILCode { OpCode = dgvInstructionsRow.Cells[1].Value == null ? string.Empty : dgvInstructionsRow.Cells[1].Value.ToString(), Operand = dgvInstructionsRow.Cells[2].Value == null ? string.Empty : dgvInstructionsRow.Cells[2].Value.ToString() });
+                indices.Add(dgvInstructionsRow.Cells[0].Value.ToString().EmptyIfNull());
+                ilCodes.Add(new ILCode { OpCode = dgvInstructionsRow.Cells[1].Value.ToString().EmptyIfNull(), Operand = dgvInstructionsRow.Cells[2].Value.ToString().EmptyIfNull() });
             }
 
             if (btnSave.Text == "Save")
@@ -262,24 +266,24 @@ namespace DotNetUniversalPatcher.UI
 
         private void CmbActionMethod_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SelectedActionMethod = cmbActionMethod.SelectedIndex;
+            _selectedActionMethod = cmbActionMethod.SelectedIndex;
 
             cmbOptional.Enabled = cmbActionMethod.SelectedIndex == (int)ActionMethod.ReturnBody;
 
-            txtIndex.Enabled = SelectedActionMethod != (int)ActionMethod.Patch;
+            txtIndex.Enabled = _selectedActionMethod != (int)ActionMethod.Patch;
 
-            if (SelectedActionMethod == (int)ActionMethod.Remove)
+            if (_selectedActionMethod == (int)ActionMethod.Remove)
             {
                 cmbOpCodes.Enabled = false;
                 txtOperand.Enabled = false;
             }
-            else
+            else if (_selectedActionMethod == (int)ActionMethod.Insert || _selectedActionMethod == (int)ActionMethod.Replace)
             {
                 cmbOpCodes.Enabled = true;
                 txtOperand.Enabled = true;
             }
 
-            if (SelectedActionMethod == (int)ActionMethod.EmptyBody || SelectedActionMethod == (int)ActionMethod.ReturnBody)
+            if (_selectedActionMethod == (int)ActionMethod.EmptyBody || _selectedActionMethod == (int)ActionMethod.ReturnBody)
             {
                 grpInstructions.Enabled = false;
                 grpAddInstruction.Enabled = false;
@@ -295,9 +299,9 @@ namespace DotNetUniversalPatcher.UI
         {
             if (cmbOpCodes.SelectedIndex != -1)
             {
-                SelectedOpCode = (OpCode)cmbOpCodes.SelectedItem;
+                _selectedOpCode = (OpCode)cmbOpCodes.SelectedItem;
 
-                switch (SelectedOpCode.OperandType)
+                switch (_selectedOpCode.OperandType)
                 {
                     case OperandType.InlineNone:
                     case OperandType.InlinePhi:
@@ -316,11 +320,11 @@ namespace DotNetUniversalPatcher.UI
         {
             if (dgvInstructions.SelectedRows.Count > 0)
             {
-                SelectedInstructionIndex = dgvInstructions.SelectedRows[0].Index;
+                _selectedInstructionIndex = dgvInstructions.SelectedRows[0].Index;
 
-                txtIndex.Text = dgvInstructions.Rows[SelectedInstructionIndex].Cells[0].Value == null ? string.Empty : dgvInstructions.Rows[SelectedInstructionIndex].Cells[0].Value.ToString();
-                cmbOpCodes.Text = dgvInstructions.Rows[SelectedInstructionIndex].Cells[1].Value == null ? string.Empty : dgvInstructions.Rows[SelectedInstructionIndex].Cells[1].Value.ToString();
-                txtOperand.Text = dgvInstructions.Rows[SelectedInstructionIndex].Cells[2].Value == null ? string.Empty : dgvInstructions.Rows[SelectedInstructionIndex].Cells[2].Value.ToString();
+                txtIndex.Text = dgvInstructions.Rows[_selectedInstructionIndex].Cells[0].Value.ToString().EmptyIfNull();
+                cmbOpCodes.Text = dgvInstructions.Rows[_selectedInstructionIndex].Cells[1].Value.ToString().EmptyIfNull();
+                txtOperand.Text = dgvInstructions.Rows[_selectedInstructionIndex].Cells[2].Value.ToString().EmptyIfNull();
 
                 btnAddTarget.Text = "Update";
             }
@@ -335,12 +339,12 @@ namespace DotNetUniversalPatcher.UI
                 if (btnAddTarget.Text == "Update")
                 {
                     btnAddTarget.Text = "Add";
-                    SelectedInstructionIndex = -1;
+                    _selectedInstructionIndex = -1;
                 }
             }
         }
 
-        private void tsmiMoveUpInstruction_Click(object sender, EventArgs e)
+        private void TsmiMoveUpInstruction_Click(object sender, EventArgs e)
         {
             if (dgvInstructions.SelectedRows.Count > 0)
             {
@@ -350,7 +354,7 @@ namespace DotNetUniversalPatcher.UI
             }
         }
 
-        private void tsmiMoveDownInstruction_Click(object sender, EventArgs e)
+        private void TsmiMoveDownInstruction_Click(object sender, EventArgs e)
         {
             if (dgvInstructions.SelectedRows.Count > 0)
             {
@@ -360,9 +364,9 @@ namespace DotNetUniversalPatcher.UI
             }
         }
 
-        public static void LoadOpCodes()
+        public void LoadOpCodes()
         {
-            OpCodes = new List<OpCode>();
+            _opCodes = new List<OpCode>();
 
             var type = typeof(OpCodes);
             var fields = type.GetFields(BindingFlags.Public | BindingFlags.Static);
@@ -371,11 +375,11 @@ namespace DotNetUniversalPatcher.UI
                 if (field.FieldType.Name == "OpCode")
                 {
                     var opCode = (OpCode)type.InvokeMember(field.Name, BindingFlags.Public | BindingFlags.Static | BindingFlags.GetField, null, null, null);
-                    OpCodes.Add(opCode);
+                    _opCodes.Add(opCode);
                 }
             }
 
-            OpCodes = OpCodes.OrderBy(x => x.Name).ToList();
+            _opCodes = _opCodes.OrderBy(x => x.Name).ToList();
         }
 
         private void ClearControls()
@@ -390,7 +394,7 @@ namespace DotNetUniversalPatcher.UI
             if (btnAddTarget.Text == "Update")
             {
                 btnAddTarget.Text = "Add";
-                SelectedInstructionIndex = -1;
+                _selectedInstructionIndex = -1;
             }
         }
     }

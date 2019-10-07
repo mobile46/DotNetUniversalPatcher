@@ -125,5 +125,10 @@ namespace DotNetUniversalPatcher.Utilities
 
             return MessageBox.Show(text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        public static DialogResult ExceptionMessageBox(Exception ex)
+        {
+            return MessageBox.Show($"{ex.Message}{(Program.IsDebugModeEnabled ? $"\r\n\r\nStack Trace:\r\n{ex.StackTrace}" : string.Empty)}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
     }
 }

@@ -225,7 +225,7 @@
             this.tsmiMoveUpTarget.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Up)));
             this.tsmiMoveUpTarget.Size = new System.Drawing.Size(199, 22);
             this.tsmiMoveUpTarget.Text = "Move Up";
-            this.tsmiMoveUpTarget.Click += new System.EventHandler(this.tsmiMoveUpTarget_Click);
+            this.tsmiMoveUpTarget.Click += new System.EventHandler(this.TsmiMoveUpTarget_Click);
             // 
             // tsmiMoveDownTarget
             // 
@@ -233,7 +233,7 @@
             this.tsmiMoveDownTarget.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Down)));
             this.tsmiMoveDownTarget.Size = new System.Drawing.Size(199, 22);
             this.tsmiMoveDownTarget.Text = "Move Down";
-            this.tsmiMoveDownTarget.Click += new System.EventHandler(this.tsmiMoveDownTarget_Click);
+            this.tsmiMoveDownTarget.Click += new System.EventHandler(this.TsmiMoveDownTarget_Click);
             // 
             // btnRemovePatch
             // 
@@ -247,13 +247,15 @@
             // 
             // cmbPatchList
             // 
+            this.cmbPatchList.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbPatchList.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbPatchList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPatchList.FormattingEnabled = true;
             this.cmbPatchList.Location = new System.Drawing.Point(6, 24);
             this.cmbPatchList.Name = "cmbPatchList";
             this.cmbPatchList.Size = new System.Drawing.Size(143, 25);
             this.cmbPatchList.TabIndex = 0;
-            this.cmbPatchList.SelectedValueChanged += new System.EventHandler(this.cmbPatchList_SelectedValueChanged);
+            this.cmbPatchList.SelectedValueChanged += new System.EventHandler(this.CmbPatchList_SelectedValueChanged);
             // 
             // grpPatchList
             // 
@@ -384,7 +386,7 @@
             // 
             // btnSelectTargetFile
             // 
-            this.btnSelectTargetFile.Location = new System.Drawing.Point(285, 25);
+            this.btnSelectTargetFile.Location = new System.Drawing.Point(285, 23);
             this.btnSelectTargetFile.Name = "btnSelectTargetFile";
             this.btnSelectTargetFile.Size = new System.Drawing.Size(27, 27);
             this.btnSelectTargetFile.TabIndex = 1;
@@ -395,16 +397,16 @@
             // txtFilePath
             // 
             this.txtFilePath.AllowDrop = true;
-            this.txtFilePath.Location = new System.Drawing.Point(6, 26);
+            this.txtFilePath.Location = new System.Drawing.Point(6, 24);
             this.txtFilePath.Name = "txtFilePath";
             this.txtFilePath.Size = new System.Drawing.Size(273, 25);
             this.txtFilePath.TabIndex = 0;
-            this.txtFilePath.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtFilePath_DragDrop);
-            this.txtFilePath.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtFilePath_DragEnter);
+            this.txtFilePath.DragDrop += new System.Windows.Forms.DragEventHandler(this.TxtFilePath_DragDrop);
+            this.txtFilePath.DragEnter += new System.Windows.Forms.DragEventHandler(this.TxtFilePath_DragEnter);
             // 
             // btnAddTargetFile
             // 
-            this.btnAddTargetFile.Location = new System.Drawing.Point(318, 25);
+            this.btnAddTargetFile.Location = new System.Drawing.Point(318, 23);
             this.btnAddTargetFile.Name = "btnAddTargetFile";
             this.btnAddTargetFile.Size = new System.Drawing.Size(71, 27);
             this.btnAddTargetFile.TabIndex = 2;
@@ -431,7 +433,7 @@
             this.chkKeepOldMaxStack.TabIndex = 0;
             this.chkKeepOldMaxStack.Text = "Keep Old MaxStack Value";
             this.chkKeepOldMaxStack.UseVisualStyleBackColor = true;
-            this.chkKeepOldMaxStack.CheckedChanged += new System.EventHandler(this.chkKeepOldMaxStack_CheckedChanged);
+            this.chkKeepOldMaxStack.CheckedChanged += new System.EventHandler(this.ChkKeepOldMaxStack_CheckedChanged);
             // 
             // grpTargetFiles
             // 
@@ -504,7 +506,7 @@
             this.tsmiMoveUpTargetFile.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Up)));
             this.tsmiMoveUpTargetFile.Size = new System.Drawing.Size(199, 22);
             this.tsmiMoveUpTargetFile.Text = "Move Up";
-            this.tsmiMoveUpTargetFile.Click += new System.EventHandler(this.tsmiMoveUpTargetFile_Click);
+            this.tsmiMoveUpTargetFile.Click += new System.EventHandler(this.TsmiMoveUpTargetFile_Click);
             // 
             // tsmiMoveDownTargetFile
             // 
@@ -512,7 +514,7 @@
             this.tsmiMoveDownTargetFile.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Down)));
             this.tsmiMoveDownTargetFile.Size = new System.Drawing.Size(199, 22);
             this.tsmiMoveDownTargetFile.Text = "Move Down";
-            this.tsmiMoveDownTargetFile.Click += new System.EventHandler(this.tsmiMoveDownTargetFile_Click);
+            this.tsmiMoveDownTargetFile.Click += new System.EventHandler(this.TsmiMoveDownTargetFile_Click);
             // 
             // flpMain
             // 

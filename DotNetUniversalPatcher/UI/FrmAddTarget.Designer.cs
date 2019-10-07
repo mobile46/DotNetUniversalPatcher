@@ -40,6 +40,8 @@
             this.cmsInstructions = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiEditInstruction = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiRemoveInstruction = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiMoveUpInstruction = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiMoveDownInstruction = new System.Windows.Forms.ToolStripMenuItem();
             this.lblOperand = new System.Windows.Forms.Label();
             this.txtOperand = new System.Windows.Forms.TextBox();
             this.cmbOpCodes = new System.Windows.Forms.ComboBox();
@@ -57,8 +59,6 @@
             this.flpMain = new System.Windows.Forms.FlowLayoutPanel();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.tsmiMoveUpInstruction = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiMoveDownInstruction = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsInstructions.SuspendLayout();
             this.grpAddInstruction.SuspendLayout();
             this.grpTarget.SuspendLayout();
@@ -69,6 +69,8 @@
             // 
             // cmbActionMethod
             // 
+            this.cmbActionMethod.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbActionMethod.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbActionMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbActionMethod.FormattingEnabled = true;
             this.cmbActionMethod.Location = new System.Drawing.Point(89, 52);
@@ -135,7 +137,7 @@
             this.tsmiMoveUpInstruction,
             this.tsmiMoveDownInstruction});
             this.cmsInstructions.Name = "cmsInstructions";
-            this.cmsInstructions.Size = new System.Drawing.Size(200, 114);
+            this.cmsInstructions.Size = new System.Drawing.Size(200, 92);
             // 
             // tsmiEditInstruction
             // 
@@ -152,6 +154,22 @@
             this.tsmiRemoveInstruction.Size = new System.Drawing.Size(199, 22);
             this.tsmiRemoveInstruction.Text = "Remove";
             this.tsmiRemoveInstruction.Click += new System.EventHandler(this.TsmiRemoveInstruction_Click);
+            // 
+            // tsmiMoveUpInstruction
+            // 
+            this.tsmiMoveUpInstruction.Name = "tsmiMoveUpInstruction";
+            this.tsmiMoveUpInstruction.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Up)));
+            this.tsmiMoveUpInstruction.Size = new System.Drawing.Size(199, 22);
+            this.tsmiMoveUpInstruction.Text = "Move Up";
+            this.tsmiMoveUpInstruction.Click += new System.EventHandler(this.TsmiMoveUpInstruction_Click);
+            // 
+            // tsmiMoveDownInstruction
+            // 
+            this.tsmiMoveDownInstruction.Name = "tsmiMoveDownInstruction";
+            this.tsmiMoveDownInstruction.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Down)));
+            this.tsmiMoveDownInstruction.Size = new System.Drawing.Size(199, 22);
+            this.tsmiMoveDownInstruction.Text = "Move Down";
+            this.tsmiMoveDownInstruction.Click += new System.EventHandler(this.TsmiMoveDownInstruction_Click);
             // 
             // lblOperand
             // 
@@ -171,6 +189,8 @@
             // 
             // cmbOpCodes
             // 
+            this.cmbOpCodes.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbOpCodes.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbOpCodes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbOpCodes.FormattingEnabled = true;
             this.cmbOpCodes.Location = new System.Drawing.Point(89, 52);
@@ -242,6 +262,8 @@
             // 
             // cmbOptional
             // 
+            this.cmbOptional.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbOptional.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbOptional.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbOptional.Enabled = false;
             this.cmbOptional.FormattingEnabled = true;
@@ -345,28 +367,11 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
-            // tsmiMoveUpInstruction
-            // 
-            this.tsmiMoveUpInstruction.Name = "tsmiMoveUpInstruction";
-            this.tsmiMoveUpInstruction.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Up)));
-            this.tsmiMoveUpInstruction.Size = new System.Drawing.Size(199, 22);
-            this.tsmiMoveUpInstruction.Text = "Move Up";
-            this.tsmiMoveUpInstruction.Click += new System.EventHandler(this.tsmiMoveUpInstruction_Click);
-            // 
-            // tsmiMoveDownInstruction
-            // 
-            this.tsmiMoveDownInstruction.Name = "tsmiMoveDownInstruction";
-            this.tsmiMoveDownInstruction.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Down)));
-            this.tsmiMoveDownInstruction.Size = new System.Drawing.Size(199, 22);
-            this.tsmiMoveDownInstruction.Text = "Move Down";
-            this.tsmiMoveDownInstruction.Click += new System.EventHandler(this.tsmiMoveDownInstruction_Click);
-            // 
             // FrmAddTarget
             // 
             this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(454, 524);
             this.Controls.Add(this.flpMain);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F);

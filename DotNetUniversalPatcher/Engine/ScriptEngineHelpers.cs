@@ -16,7 +16,7 @@ namespace DotNetUniversalPatcher.Engine
     {
         internal static readonly ModuleDefMD MscorelibModule = ModuleDefMD.Load(typeof(void).Module);
 
-        private static readonly Dictionary<string, string> ReservedPlaceholders = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
+        internal static readonly Dictionary<string, string> ReservedPlaceholders = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
 
         public static bool ValidateScript(PatcherScript script)
         {
@@ -52,7 +52,7 @@ namespace DotNetUniversalPatcher.Engine
                             throw new ValidatePatchAndTargetException("FullName or Action Method are empty!", i, j);
                         }
 
-                        if (target.ILCodes == null && target.Indices == null && target.Optional == null)
+                        if (target.Action != ActionMethod.EmptyBody && target.ILCodes == null && target.Indices == null && target.Optional == null)
                         {
                             throw new ValidatePatchAndTargetException("Instructions, Indices or Optional are empty!", i, j);
                         }
@@ -77,51 +77,61 @@ namespace DotNetUniversalPatcher.Engine
 
                 if (opcode == null) throw new PatcherException("OpCode is empty", target.FullName);
 
-                string operand = target.ILCodes[i].Operand;
+                target.Instructions[i] = new Instruction(Helpers.GetOpCodeFromString(opcode.Replace('_', '.')));
+            }
 
-                var instruction = new Instruction(Helpers.GetOpCodeFromString(opcode.Replace('_', '.')));
+            for (int i = 0; i < target.Instructions.Length; i++)
+            {
+                string operand = target.ILCodes[i].Operand;
 
                 if (operand != null)
                 {
-                    switch (instruction.OpCode.OperandType)
+                    switch (target.Instructions[i].OpCode.OperandType)
                     {
                         case OperandType.InlineBrTarget:
                         case OperandType.ShortInlineBrTarget:
-                            instruction.Operand = p.GetInstruction(operand.ToInt());
+                            if (target.Action == ActionMethod.Patch)
+                            {
+                                target.Instructions[i].Operand = p.GetInstruction(target, operand.ToInt());
+                            }
+                            else
+                            {
+                                target.Instructions[i].Operand = p.GetInstruction(operand.ToInt());
+                            }
                             break;
 
                         case OperandType.InlineField:
-                            instruction.Operand = p.FindField(operand);
+                            target.Instructions[i].Operand = p.FindField(operand);
                             break;
 
                         case OperandType.InlineI:
-                            instruction.Operand = operand.ToInt();
+                            target.Instructions[i].Operand = operand.ToInt();
                             break;
 
                         case OperandType.InlineI8:
-                            instruction.Operand = operand.ToLong();
+                            target.Instructions[i].Operand = operand.ToLong();
                             break;
 
                         case OperandType.InlineMethod:
-                            instruction.Operand = p.FindMethod(operand);
+                            target.Instructions[i].Operand = p.FindMethod(operand);
                             break;
 
                         case OperandType.InlineNone:
                         case OperandType.InlinePhi:
                         case OperandType.NOT_USED_8:
-                            instruction.Operand = null;
+                            target.Instructions[i].Operand = null;
                             break;
 
                         case OperandType.InlineR:
-                            instruction.Operand = operand.ToDouble();
+                            target.Instructions[i].Operand = operand.ToDouble();
                             break;
 
                         case OperandType.InlineSig:
-                            instruction.Operand = p.FindMethod(operand).MethodSig;
+                            target.Instructions[i].Operand = p.FindMethod(operand).MethodSig;
                             break;
 
                         case OperandType.InlineString:
-                            instruction.Operand = operand;
+                            target.Instructions[i].Operand = operand;
                             break;
 
                         case OperandType.InlineSwitch:
@@ -131,39 +141,45 @@ namespace DotNetUniversalPatcher.Engine
 
                             for (var j = 0; j < array.Length; j++)
                             {
-                                instructions[j] = p.GetInstruction(array[j].ToInt());
+                                if (target.Action == ActionMethod.Patch)
+                                {
+                                    instructions[j] = p.GetInstruction(target, array[j].ToInt());
+                                }
+                                else
+                                {
+                                    instructions[j] = p.GetInstruction(array[j].ToInt());
+                                }
                             }
 
-                            instruction.Operand = instructions;
+                            target.Instructions[i].Operand = instructions;
                             break;
 
                         case OperandType.InlineTok:
-                            instruction.Operand = p.FindMethodFieldOrType(operand);
+                            target.Instructions[i].Operand = p.FindMethodFieldOrType(operand);
                             break;
 
                         case OperandType.InlineType:
-                            instruction.Operand = p.FindType(operand);
+                            target.Instructions[i].Operand = p.FindType(operand);
                             break;
 
                         case OperandType.InlineVar:
-                            instruction.Operand = p.Method.Parameters[operand.ToInt()];
+                            target.Instructions[i].Operand = p.Method.Parameters[operand.ToInt()];
                             break;
 
                         case OperandType.ShortInlineI:
-                            instruction.Operand = instruction.OpCode.Code == Code.Ldc_I4_S ? (object)operand.ToSByte() : operand.ToByte();
+                            target.Instructions[i].Operand = target.Instructions[i].OpCode.Code == Code.Ldc_I4_S ? (object)operand.ToSByte() : operand.ToByte();
                             break;
 
                         case OperandType.ShortInlineR:
-                            instruction.Operand = operand.ToFloat();
+                            target.Instructions[i].Operand = operand.ToFloat();
                             break;
 
                         case OperandType.ShortInlineVar:
-                            instruction.Operand = p.Method.Parameters[operand.ToInt()];
+                            target.Instructions[i].Operand = p.Method.Parameters[operand.ToInt()];
                             break;
                     }
                 }
 
-                target.Instructions[i] = instruction;
             }
 
             target.ILCodes = null; //We don't need that anymore.

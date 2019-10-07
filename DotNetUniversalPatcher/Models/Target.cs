@@ -16,7 +16,7 @@ namespace DotNetUniversalPatcher.Models
         [JsonProperty("Instructions")]
         public List<ILCode> ILCodes { get; set; } = new List<ILCode>();
 
-        public List<object> Indices { get; set; } = new List<object>();
+        public List<string> Indices { get; set; } = new List<string>();
 
         [JsonConverter(typeof(StringEnumConverter))]
         public ActionMethod? Action { get; set; }

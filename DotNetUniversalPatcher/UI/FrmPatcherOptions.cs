@@ -3,6 +3,7 @@ using DotNetUniversalPatcher.Models;
 using DotNetUniversalPatcher.Utilities;
 using System;
 using System.Windows.Forms;
+using DotNetUniversalPatcher.Engine;
 
 namespace DotNetUniversalPatcher.UI
 {
@@ -48,6 +49,14 @@ namespace DotNetUniversalPatcher.UI
                 }
             }
 
+            if (dgvPlaceholders.Rows.Count == 0)
+            {
+                foreach (var placeholder in ScriptEngineHelpers.ReservedPlaceholders)
+                {
+                    dgvReservedPlaceholers.Rows.Add(placeholder.Key, placeholder.Value);
+                }
+            }
+
             txtPlaceholderKey.Text = string.Empty;
             txtPlaceholderValue.Text = string.Empty;
 
@@ -81,12 +90,12 @@ namespace DotNetUniversalPatcher.UI
 
             if (btnAddPlaceholder.Text == "Add")
             {
-                dgvPlaceholders.Rows.Add(txtPlaceholderKey.Text, txtPlaceholderValue.Text);
+                dgvPlaceholders.Rows.Add(txtPlaceholderKey.Text.EmptyIfNull(), txtPlaceholderValue.Text.EmptyIfNull());
             }
             else if (btnAddPlaceholder.Text == "Update")
             {
-                dgvPlaceholders.Rows[_selectedPlaceholderIndex].Cells[0].Value = txtPlaceholderKey.Text;
-                dgvPlaceholders.Rows[_selectedPlaceholderIndex].Cells[1].Value = txtPlaceholderValue.Text;
+                dgvPlaceholders.Rows[_selectedPlaceholderIndex].Cells[0].Value = txtPlaceholderKey.Text.EmptyIfNull();
+                dgvPlaceholders.Rows[_selectedPlaceholderIndex].Cells[1].Value = txtPlaceholderValue.Text.EmptyIfNull();
 
                 _selectedPlaceholderIndex = -1;
 
@@ -172,8 +181,8 @@ namespace DotNetUniversalPatcher.UI
             {
                 _selectedPlaceholderIndex = dgvPlaceholders.SelectedRows[0].Index;
 
-                txtPlaceholderKey.Text = dgvPlaceholders.Rows[_selectedPlaceholderIndex].Cells[0].Value.ToString();
-                txtPlaceholderValue.Text = dgvPlaceholders.Rows[_selectedPlaceholderIndex].Cells[1].Value.ToString();
+                txtPlaceholderKey.Text = dgvPlaceholders.Rows[_selectedPlaceholderIndex].Cells[0].Value.ToString().EmptyIfNull();
+                txtPlaceholderValue.Text = dgvPlaceholders.Rows[_selectedPlaceholderIndex].Cells[1].Value.ToString().EmptyIfNull();
 
                 btnAddPlaceholder.Text = "Update";
             }
@@ -193,7 +202,7 @@ namespace DotNetUniversalPatcher.UI
             }
         }
 
-        private void tsmiMoveUpPlaceholder_Click(object sender, EventArgs e)
+        private void TsmiMoveUpPlaceholder_Click(object sender, EventArgs e)
         {
             if (dgvPlaceholders.SelectedRows.Count > 0)
             {
@@ -203,7 +212,7 @@ namespace DotNetUniversalPatcher.UI
             }
         }
 
-        private void tsmiMoveDownPlaceholder_Click(object sender, EventArgs e)
+        private void TsmiMoveDownPlaceholder_Click(object sender, EventArgs e)
         {
             if (dgvPlaceholders.SelectedRows.Count > 0)
             {

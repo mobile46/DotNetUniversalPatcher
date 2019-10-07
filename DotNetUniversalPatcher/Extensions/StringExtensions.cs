@@ -18,48 +18,64 @@ namespace DotNetUniversalPatcher.Extensions
 
         internal static string MultipleReplace(this string text, string pattern, Dictionary<string, string> replacements)
         {
-            var matches = Regex.Matches(text, pattern, RegexOptions.IgnoreCase);
+            int loopLimit = 5;
 
-            if (matches.Count > 0)
+            while (loopLimit != 0)
             {
-                var matchedKeys = new Dictionary<string, string>();
+                MatchCollection matches = Regex.Matches(text, pattern, RegexOptions.IgnoreCase);
 
-                foreach (Match match in matches)
+                if (matches.Count > 0)
                 {
-                    string value;
+                    var matchedKeys = new Dictionary<string, string>();
 
-                    if (match.Success)
+                    foreach (Match match in matches)
                     {
-                        value = match.Value;
-                        text = Regex.Replace(text, value, value.ToUpperInvariant());
-                    }
-                    else
-                    {
-                        break;
-                    }
+                        string value;
 
-                    if (!matchedKeys.ContainsKey(value))
-                    {
-                        if (replacements.ContainsKey(value))
+                        if (match.Success)
                         {
-                            matchedKeys.Add(value.ToUpperInvariant(), replacements[value]);
+                            value = match.Value;
+                            text = Regex.Replace(text, value, value.ToUpperInvariant());
                         }
                         else
                         {
-                            throw new PatcherException("Placeholder not found", value);
+                            break;
+                        }
+
+                        if (!matchedKeys.ContainsKey(value))
+                        {
+                            if (replacements.ContainsKey(value))
+                            {
+                                matchedKeys.Add(value.ToUpperInvariant(), replacements[value]);
+                            }
+                            else
+                            {
+                                throw new PatcherException("Placeholder not found", value);
+                            }
                         }
                     }
-                }
 
-                foreach (string key in matchedKeys.Keys)
+                    foreach (string key in matchedKeys.Keys)
+                    {
+                        text = Regex.Replace(text, $"(?<!#)({key})(?!#)", matchedKeys[key], RegexOptions.IgnoreCase);
+                    }
+
+                    loopLimit--;
+                }
+                else
                 {
-                    text = Regex.Replace(text, $"(?<!#)({key})(?!#)", matchedKeys[key], RegexOptions.IgnoreCase);
+                    break;
                 }
             }
 
             text = text.Replace("##", "#");
 
             return text;
+        }
+
+        internal static string EmptyIfNull(this string text)
+        {
+            return string.IsNullOrEmpty(text) ? string.Empty : text;
         }
 
         internal static sbyte ToSByte(this string text)

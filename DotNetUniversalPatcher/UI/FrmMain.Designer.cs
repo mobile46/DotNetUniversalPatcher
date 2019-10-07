@@ -46,8 +46,8 @@ namespace DotNetUniversalPatcher.UI
             this.lblTargetFiles = new System.Windows.Forms.Label();
             this.lblWebsite = new System.Windows.Forms.Label();
             this.grpReleaseInfo = new System.Windows.Forms.GroupBox();
-            this.txtReleaseInfo = new System.Windows.Forms.TextBox();
             this.lstLog = new System.Windows.Forms.ListBox();
+            this.txtReleaseInfo = new System.Windows.Forms.TextBox();
             this.chkMakeBackup = new System.Windows.Forms.CheckBox();
             this.btnPatch = new System.Windows.Forms.Button();
             this.btnAbout = new System.Windows.Forms.Button();
@@ -111,6 +111,8 @@ namespace DotNetUniversalPatcher.UI
             // 
             // cmbSoftware
             // 
+            this.cmbSoftware.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbSoftware.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbSoftware.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSoftware.FormattingEnabled = true;
             this.cmbSoftware.Location = new System.Drawing.Point(112, 21);
@@ -201,17 +203,6 @@ namespace DotNetUniversalPatcher.UI
             this.grpReleaseInfo.TabStop = false;
             this.grpReleaseInfo.Text = "Release Info";
             // 
-            // txtReleaseInfo
-            // 
-            this.txtReleaseInfo.Enabled = false;
-            this.txtReleaseInfo.Location = new System.Drawing.Point(9, 24);
-            this.txtReleaseInfo.Multiline = true;
-            this.txtReleaseInfo.Name = "txtReleaseInfo";
-            this.txtReleaseInfo.ReadOnly = true;
-            this.txtReleaseInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtReleaseInfo.Size = new System.Drawing.Size(411, 89);
-            this.txtReleaseInfo.TabIndex = 0;
-            // 
             // lstLog
             // 
             this.lstLog.FormattingEnabled = true;
@@ -225,6 +216,17 @@ namespace DotNetUniversalPatcher.UI
             this.lstLog.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LstLog_KeyDown);
             this.lstLog.MouseLeave += new System.EventHandler(this.LstLog_MouseLeave);
             this.lstLog.MouseMove += new System.Windows.Forms.MouseEventHandler(this.LstLog_MouseMove);
+            // 
+            // txtReleaseInfo
+            // 
+            this.txtReleaseInfo.Enabled = false;
+            this.txtReleaseInfo.Location = new System.Drawing.Point(9, 24);
+            this.txtReleaseInfo.Multiline = true;
+            this.txtReleaseInfo.Name = "txtReleaseInfo";
+            this.txtReleaseInfo.ReadOnly = true;
+            this.txtReleaseInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtReleaseInfo.Size = new System.Drawing.Size(411, 89);
+            this.txtReleaseInfo.TabIndex = 0;
             // 
             // chkMakeBackup
             // 

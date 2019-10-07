@@ -87,7 +87,7 @@ namespace DotNetUniversalPatcher.UI
             }
             catch (Exception ex)
             {
-                Helpers.CustomMessageBox(ex.Message, true);
+                Helpers.ExceptionMessageBox(ex);
             }
         }
 
@@ -242,7 +242,7 @@ namespace DotNetUniversalPatcher.UI
             }
             catch (Exception ex)
             {
-                Helpers.CustomMessageBox(ex.Message, true);
+                Helpers.ExceptionMessageBox(ex);
             }
         }
 
@@ -271,7 +271,7 @@ namespace DotNetUniversalPatcher.UI
             }
             catch (Exception ex)
             {
-                Helpers.CustomMessageBox(ex.Message, true);
+                Helpers.ExceptionMessageBox(ex);
             }
         }
 
@@ -377,7 +377,7 @@ namespace DotNetUniversalPatcher.UI
             {
                 _selectedTargetFileIndex = dgvTargetFiles.SelectedRows[0].Index;
 
-                txtFilePath.Text = dgvTargetFiles.SelectedRows[0].Cells[0].Value.ToString();
+                txtFilePath.Text = dgvTargetFiles.SelectedRows[0].Cells[0].Value.ToString().EmptyIfNull();
 
                 btnAddTargetFile.Text = "Update";
             }
@@ -395,7 +395,7 @@ namespace DotNetUniversalPatcher.UI
             }
         }
 
-        private void cmbPatchList_SelectedValueChanged(object sender, EventArgs e)
+        private void CmbPatchList_SelectedValueChanged(object sender, EventArgs e)
         {
             if (cmbPatchList.SelectedIndex != -1)
             {
@@ -448,7 +448,7 @@ namespace DotNetUniversalPatcher.UI
             }
         }
 
-        private void txtFilePath_DragEnter(object sender, DragEventArgs e)
+        private void TxtFilePath_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent("FileDrop"))
             {
@@ -459,18 +459,62 @@ namespace DotNetUniversalPatcher.UI
             e.Effect = DragDropEffects.None;
         }
 
-        private void txtFilePath_DragDrop(object sender, DragEventArgs e)
+        private void TxtFilePath_DragDrop(object sender, DragEventArgs e)
         {
             txtFilePath.Text = (e.Data.GetData("FileDrop") as string[])?[0];
         }
 
-        private void chkKeepOldMaxStack_CheckedChanged(object sender, EventArgs e)
+        private void ChkKeepOldMaxStack_CheckedChanged(object sender, EventArgs e)
         {
             if (PatchList.Count > 0 && PatchList[cmbPatchList.SelectedIndex]?.TargetInfo != null)
             {
                 PatchList[cmbPatchList.SelectedIndex].TargetInfo.KeepOldMaxStack = chkKeepOldMaxStack.Checked;
 
                 CheckChanges();
+            }
+        }
+
+        private void TsmiMoveUpTarget_Click(object sender, EventArgs e)
+        {
+            if (dgvTargetList.SelectedRows.Count > 0)
+            {
+                PatchList[cmbPatchList.SelectedIndex].TargetList.MoveUp(dgvTargetList.SelectedRows[0].Index);
+
+                dgvTargetList.MoveUp();
+            }
+        }
+
+        private void TsmiMoveDownTarget_Click(object sender, EventArgs e)
+        {
+            if (dgvTargetList.SelectedRows.Count > 0)
+            {
+                PatchList[cmbPatchList.SelectedIndex].TargetList.MoveDown(dgvTargetList.SelectedRows[0].Index);
+
+                dgvTargetList.MoveDown();
+            }
+        }
+
+        private void TsmiMoveUpTargetFile_Click(object sender, EventArgs e)
+        {
+            if (dgvTargetFiles.SelectedRows.Count > 0)
+            {
+                dgvTargetFiles.MoveUp();
+
+                ResetAddTargetFile();
+
+                AddTargetFilesToSelectedPatch();
+            }
+        }
+
+        private void TsmiMoveDownTargetFile_Click(object sender, EventArgs e)
+        {
+            if (dgvTargetFiles.SelectedRows.Count > 0)
+            {
+                dgvTargetFiles.MoveDown();
+
+                ResetAddTargetFile();
+
+                AddTargetFilesToSelectedPatch();
             }
         }
 
@@ -488,7 +532,7 @@ namespace DotNetUniversalPatcher.UI
 
                 using (var sfd = new SaveFileDialog())
                 {
-                    sfd.Filter = "DNUP files (*.dnup)|*.dnup|All files|*.*"; //todo win 7 test
+                    sfd.Filter = "DNUP files (.dnup)|*.dnup|All files (*.*)|*.*";
                     sfd.OverwritePrompt = true;
                     sfd.FileName = $"{Script.PatcherOptions.PatcherInfo.Software}.dnup";
 
@@ -523,7 +567,7 @@ namespace DotNetUniversalPatcher.UI
             }
             catch (Exception ex)
             {
-                Helpers.CustomMessageBox(ex.Message, true);
+                Helpers.ExceptionMessageBox(ex);
             }
 
             return false;
@@ -662,50 +706,6 @@ namespace DotNetUniversalPatcher.UI
             foreach (DataGridViewRow dgvr in dgvTargetFiles.Rows)
             {
                 PatchList[selectedPatchIndex].TargetInfo.TargetFiles.Add(dgvr.Cells[0].Value.ToString());
-            }
-        }
-
-        private void tsmiMoveUpTarget_Click(object sender, EventArgs e)
-        {
-            if (dgvTargetList.SelectedRows.Count > 0)
-            {
-                PatchList[cmbPatchList.SelectedIndex].TargetList.MoveUp(dgvTargetList.SelectedRows[0].Index);
-
-                dgvTargetList.MoveUp();
-            }
-        }
-
-        private void tsmiMoveDownTarget_Click(object sender, EventArgs e)
-        {
-            if (dgvTargetList.SelectedRows.Count > 0)
-            {
-                PatchList[cmbPatchList.SelectedIndex].TargetList.MoveDown(dgvTargetList.SelectedRows[0].Index);
-
-                dgvTargetList.MoveDown();
-            }
-        }
-
-        private void tsmiMoveUpTargetFile_Click(object sender, EventArgs e)
-        {
-            if (dgvTargetFiles.SelectedRows.Count > 0)
-            {
-                dgvTargetFiles.MoveUp();
-
-                ResetAddTargetFile();
-
-                AddTargetFilesToSelectedPatch();
-            }
-        }
-
-        private void tsmiMoveDownTargetFile_Click(object sender, EventArgs e)
-        {
-            if (dgvTargetFiles.SelectedRows.Count > 0)
-            {
-                dgvTargetFiles.MoveDown();
-
-                ResetAddTargetFile();
-
-                AddTargetFilesToSelectedPatch();
             }
         }
     }

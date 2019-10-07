@@ -576,6 +576,16 @@ namespace DotNetUniversalPatcher.Engine
             return null;
         }
 
+        internal Instruction GetInstruction(Target target, int index)
+        {
+            if (index > -1 && index < target.Instructions.Length)
+            {
+                return target.Instructions[index];
+            }
+
+            return null;
+        }
+
         public void Dispose()
         {
             Module?.Dispose();

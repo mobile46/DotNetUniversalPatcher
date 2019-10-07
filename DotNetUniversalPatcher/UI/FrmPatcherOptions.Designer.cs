@@ -65,10 +65,15 @@
             this.cmsPlaceholders = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiEditPlaceholder = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiRemovePlaceholder = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
             this.tsmiMoveUpPlaceholder = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiMoveDownPlaceholder = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.grpReservedPlaceholers = new System.Windows.Forms.GroupBox();
+            this.dgvReservedPlaceholers = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.flpMain.SuspendLayout();
             this.tabPatcherOptions.SuspendLayout();
             this.tpPatcherOptions.SuspendLayout();
@@ -79,6 +84,9 @@
             this.grpPlaceholders.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlaceholders)).BeginInit();
             this.cmsPlaceholders.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.grpReservedPlaceholers.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReservedPlaceholers)).BeginInit();
             this.SuspendLayout();
             // 
             // flpMain
@@ -91,17 +99,18 @@
             this.flpMain.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.flpMain.Name = "flpMain";
             this.flpMain.Padding = new System.Windows.Forms.Padding(8, 0, 8, 7);
-            this.flpMain.Size = new System.Drawing.Size(518, 490);
+            this.flpMain.Size = new System.Drawing.Size(512, 490);
             this.flpMain.TabIndex = 0;
             // 
             // tabPatcherOptions
             // 
             this.tabPatcherOptions.Controls.Add(this.tpPatcherOptions);
             this.tabPatcherOptions.Controls.Add(this.tpPlaceholders);
+            this.tabPatcherOptions.Controls.Add(this.tabPage1);
             this.tabPatcherOptions.Location = new System.Drawing.Point(11, 3);
             this.tabPatcherOptions.Name = "tabPatcherOptions";
             this.tabPatcherOptions.SelectedIndex = 0;
-            this.tabPatcherOptions.Size = new System.Drawing.Size(495, 443);
+            this.tabPatcherOptions.Size = new System.Drawing.Size(491, 443);
             this.tabPatcherOptions.TabIndex = 0;
             // 
             // tpPatcherOptions
@@ -111,7 +120,7 @@
             this.tpPatcherOptions.Location = new System.Drawing.Point(4, 26);
             this.tpPatcherOptions.Name = "tpPatcherOptions";
             this.tpPatcherOptions.Padding = new System.Windows.Forms.Padding(3);
-            this.tpPatcherOptions.Size = new System.Drawing.Size(487, 413);
+            this.tpPatcherOptions.Size = new System.Drawing.Size(483, 413);
             this.tpPatcherOptions.TabIndex = 0;
             this.tpPatcherOptions.Text = "Patcher Options";
             this.tpPatcherOptions.UseVisualStyleBackColor = true;
@@ -121,7 +130,7 @@
             this.grpOptions.Controls.Add(this.chkMakeBackup);
             this.grpOptions.Location = new System.Drawing.Point(6, 351);
             this.grpOptions.Name = "grpOptions";
-            this.grpOptions.Size = new System.Drawing.Size(469, 52);
+            this.grpOptions.Size = new System.Drawing.Size(465, 52);
             this.grpOptions.TabIndex = 1;
             this.grpOptions.TabStop = false;
             this.grpOptions.Text = "Options";
@@ -154,7 +163,7 @@
             this.grpPatcherInfo.Controls.Add(this.lblSoftware);
             this.grpPatcherInfo.Location = new System.Drawing.Point(6, 6);
             this.grpPatcherInfo.Name = "grpPatcherInfo";
-            this.grpPatcherInfo.Size = new System.Drawing.Size(469, 339);
+            this.grpPatcherInfo.Size = new System.Drawing.Size(465, 339);
             this.grpPatcherInfo.TabIndex = 0;
             this.grpPatcherInfo.TabStop = false;
             this.grpPatcherInfo.Text = "Patcher Info";
@@ -284,7 +293,7 @@
             this.tpPlaceholders.Location = new System.Drawing.Point(4, 26);
             this.tpPlaceholders.Name = "tpPlaceholders";
             this.tpPlaceholders.Padding = new System.Windows.Forms.Padding(3);
-            this.tpPlaceholders.Size = new System.Drawing.Size(487, 413);
+            this.tpPlaceholders.Size = new System.Drawing.Size(483, 413);
             this.tpPlaceholders.TabIndex = 1;
             this.tpPlaceholders.Text = "Placeholders";
             this.tpPlaceholders.UseVisualStyleBackColor = true;
@@ -299,7 +308,7 @@
             this.grpAddPlaceholder.Controls.Add(this.btnAddPlaceholder);
             this.grpAddPlaceholder.Location = new System.Drawing.Point(6, 6);
             this.grpAddPlaceholder.Name = "grpAddPlaceholder";
-            this.grpAddPlaceholder.Size = new System.Drawing.Size(469, 188);
+            this.grpAddPlaceholder.Size = new System.Drawing.Size(465, 188);
             this.grpAddPlaceholder.TabIndex = 0;
             this.grpAddPlaceholder.TabStop = false;
             this.grpAddPlaceholder.Text = "Add Placeholder";
@@ -361,7 +370,7 @@
             this.grpPlaceholders.Controls.Add(this.dgvPlaceholders);
             this.grpPlaceholders.Location = new System.Drawing.Point(6, 200);
             this.grpPlaceholders.Name = "grpPlaceholders";
-            this.grpPlaceholders.Size = new System.Drawing.Size(469, 203);
+            this.grpPlaceholders.Size = new System.Drawing.Size(465, 203);
             this.grpPlaceholders.TabIndex = 1;
             this.grpPlaceholders.TabStop = false;
             this.grpPlaceholders.Text = "Placeholders";
@@ -386,7 +395,7 @@
             this.dgvPlaceholders.Name = "dgvPlaceholders";
             this.dgvPlaceholders.RowHeadersVisible = false;
             this.dgvPlaceholders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPlaceholders.Size = new System.Drawing.Size(450, 173);
+            this.dgvPlaceholders.Size = new System.Drawing.Size(447, 173);
             this.dgvPlaceholders.TabIndex = 0;
             // 
             // dgvcPlaceholderKey
@@ -409,7 +418,7 @@
             this.tsmiMoveUpPlaceholder,
             this.tsmiMoveDownPlaceholder});
             this.cmsPlaceholders.Name = "cmsInstructions";
-            this.cmsPlaceholders.Size = new System.Drawing.Size(200, 114);
+            this.cmsPlaceholders.Size = new System.Drawing.Size(200, 92);
             // 
             // tsmiEditPlaceholder
             // 
@@ -427,34 +436,13 @@
             this.tsmiRemovePlaceholder.Text = "Remove";
             this.tsmiRemovePlaceholder.Click += new System.EventHandler(this.TsmiRemovePlaceholder_Click);
             // 
-            // btnCancel
-            // 
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(11, 452);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(244, 27);
-            this.btnCancel.TabIndex = 0;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(261, 452);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(244, 27);
-            this.btnSave.TabIndex = 1;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
-            // 
             // tsmiMoveUpPlaceholder
             // 
             this.tsmiMoveUpPlaceholder.Name = "tsmiMoveUpPlaceholder";
             this.tsmiMoveUpPlaceholder.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Up)));
             this.tsmiMoveUpPlaceholder.Size = new System.Drawing.Size(199, 22);
             this.tsmiMoveUpPlaceholder.Text = "Move Up";
-            this.tsmiMoveUpPlaceholder.Click += new System.EventHandler(this.tsmiMoveUpPlaceholder_Click);
+            this.tsmiMoveUpPlaceholder.Click += new System.EventHandler(this.TsmiMoveUpPlaceholder_Click);
             // 
             // tsmiMoveDownPlaceholder
             // 
@@ -462,7 +450,81 @@
             this.tsmiMoveDownPlaceholder.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Down)));
             this.tsmiMoveDownPlaceholder.Size = new System.Drawing.Size(199, 22);
             this.tsmiMoveDownPlaceholder.Text = "Move Down";
-            this.tsmiMoveDownPlaceholder.Click += new System.EventHandler(this.tsmiMoveDownPlaceholder_Click);
+            this.tsmiMoveDownPlaceholder.Click += new System.EventHandler(this.TsmiMoveDownPlaceholder_Click);
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.grpReservedPlaceholers);
+            this.tabPage1.Location = new System.Drawing.Point(4, 26);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(483, 413);
+            this.tabPage1.TabIndex = 2;
+            this.tabPage1.Text = "Reserved Placeholders";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // grpReservedPlaceholers
+            // 
+            this.grpReservedPlaceholers.Controls.Add(this.dgvReservedPlaceholers);
+            this.grpReservedPlaceholers.Location = new System.Drawing.Point(6, 6);
+            this.grpReservedPlaceholers.Name = "grpReservedPlaceholers";
+            this.grpReservedPlaceholers.Size = new System.Drawing.Size(465, 397);
+            this.grpReservedPlaceholers.TabIndex = 2;
+            this.grpReservedPlaceholers.TabStop = false;
+            this.grpReservedPlaceholers.Text = "Reserved Placeholders";
+            // 
+            // dgvReservedPlaceholers
+            // 
+            this.dgvReservedPlaceholers.AllowUserToAddRows = false;
+            this.dgvReservedPlaceholers.AllowUserToDeleteRows = false;
+            this.dgvReservedPlaceholers.AllowUserToResizeRows = false;
+            this.dgvReservedPlaceholers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvReservedPlaceholers.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvReservedPlaceholers.BackgroundColor = System.Drawing.Color.White;
+            this.dgvReservedPlaceholers.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvReservedPlaceholers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvReservedPlaceholers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2});
+            this.dgvReservedPlaceholers.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvReservedPlaceholers.Location = new System.Drawing.Point(9, 21);
+            this.dgvReservedPlaceholers.MultiSelect = false;
+            this.dgvReservedPlaceholers.Name = "dgvReservedPlaceholers";
+            this.dgvReservedPlaceholers.RowHeadersVisible = false;
+            this.dgvReservedPlaceholers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvReservedPlaceholers.Size = new System.Drawing.Size(447, 370);
+            this.dgvReservedPlaceholers.TabIndex = 0;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Placeholder Key";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Placeholder Value";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.Location = new System.Drawing.Point(11, 452);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(242, 27);
+            this.btnCancel.TabIndex = 0;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(259, 452);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(242, 27);
+            this.btnSave.TabIndex = 1;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
             // FrmPatcherOptions
             // 
@@ -470,7 +532,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(518, 490);
+            this.ClientSize = new System.Drawing.Size(512, 490);
             this.Controls.Add(this.flpMain);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -494,6 +556,9 @@
             this.grpPlaceholders.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlaceholders)).EndInit();
             this.cmsPlaceholders.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.grpReservedPlaceholers.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReservedPlaceholers)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -539,5 +604,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcPlaceholderValue;
         private System.Windows.Forms.ToolStripMenuItem tsmiMoveUpPlaceholder;
         private System.Windows.Forms.ToolStripMenuItem tsmiMoveDownPlaceholder;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.GroupBox grpReservedPlaceholers;
+        private System.Windows.Forms.DataGridView dgvReservedPlaceholers;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
     }
 }
