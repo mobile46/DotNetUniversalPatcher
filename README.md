@@ -1,4 +1,4 @@
-# DotNetUniversalPatcher
+# DotNet Universal Patcher
 An .NET Patcher written in C# that implements the dnlib and dnpatch libraries.
 
 # License
