@@ -12,7 +12,7 @@ namespace DotNetUniversalPatcher.UI
 {
     public partial class FrmAddTarget : Form
     {
-        internal static FrmAddTarget Instance = new FrmAddTarget();
+        internal static FrmAddTarget Instance { get; } = new FrmAddTarget();
 
         private static List<OpCode> _opCodes;
 
@@ -192,7 +192,7 @@ namespace DotNetUniversalPatcher.UI
 
         private void BtnClear_Click(object sender, EventArgs e)
         {
-            if (txtIndex.TextLength > 0 || cmbOpCodes.SelectedIndex != -1 || txtOperand.TextAlign > 0)
+            if (txtIndex.TextLength > 0 || cmbOpCodes.SelectedIndex != -1 || txtOperand.TextLength > 0)
             {
                 ClearControls();
             }
@@ -226,8 +226,8 @@ namespace DotNetUniversalPatcher.UI
 
             foreach (DataGridViewRow dgvInstructionsRow in dgvInstructions.Rows)
             {
-                indices.Add(dgvInstructionsRow.Cells[0].Value.ToString().EmptyIfNull());
-                ilCodes.Add(new ILCode { OpCode = dgvInstructionsRow.Cells[1].Value.ToString().EmptyIfNull(), Operand = dgvInstructionsRow.Cells[2].Value.ToString().EmptyIfNull() });
+                indices.Add(dgvInstructionsRow.Cells[0].Value?.ToString().EmptyIfNull());
+                ilCodes.Add(new ILCode { OpCode = dgvInstructionsRow.Cells[1].Value?.ToString().EmptyIfNull(), Operand = dgvInstructionsRow.Cells[2].Value?.ToString().EmptyIfNull() });
             }
 
             if (btnSave.Text == "Save")
@@ -322,9 +322,9 @@ namespace DotNetUniversalPatcher.UI
             {
                 _selectedInstructionIndex = dgvInstructions.SelectedRows[0].Index;
 
-                txtIndex.Text = dgvInstructions.Rows[_selectedInstructionIndex].Cells[0].Value.ToString().EmptyIfNull();
-                cmbOpCodes.Text = dgvInstructions.Rows[_selectedInstructionIndex].Cells[1].Value.ToString().EmptyIfNull();
-                txtOperand.Text = dgvInstructions.Rows[_selectedInstructionIndex].Cells[2].Value.ToString().EmptyIfNull();
+                txtIndex.Text = dgvInstructions.Rows[_selectedInstructionIndex].Cells[0].Value?.ToString().EmptyIfNull();
+                cmbOpCodes.Text = dgvInstructions.Rows[_selectedInstructionIndex].Cells[1].Value?.ToString().EmptyIfNull();
+                txtOperand.Text = dgvInstructions.Rows[_selectedInstructionIndex].Cells[2].Value?.ToString().EmptyIfNull();
 
                 btnAddTarget.Text = "Update";
             }

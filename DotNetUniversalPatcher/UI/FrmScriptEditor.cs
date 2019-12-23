@@ -12,7 +12,7 @@ namespace DotNetUniversalPatcher.UI
 {
     public partial class FrmScriptEditor : Form
     {
-        internal static FrmScriptEditor Instance = new FrmScriptEditor();
+        internal static FrmScriptEditor Instance { get; } = new FrmScriptEditor();
 
         internal PatcherScript Script = new PatcherScript();
 
@@ -47,16 +47,13 @@ namespace DotNetUniversalPatcher.UI
 
         private void BtnRemovePatch_Click(object sender, EventArgs e)
         {
-            if (cmbPatchList.Items.Count > 0)
+            if (cmbPatchList.SelectedIndex > -1 && MessageBox.Show($"Are you sure you want to remove \"{cmbPatchList.Text}\"?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                if (MessageBox.Show($"Are you sure you want to remove \"{cmbPatchList.Text}\"?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    PatchList.RemoveAt(cmbPatchList.SelectedIndex);
+                PatchList.RemoveAt(cmbPatchList.SelectedIndex);
 
-                    RefreshPatchList();
+                RefreshPatchList();
 
-                    CheckChanges();
-                }
+                CheckChanges();
             }
 
             if (cmbPatchList.Items.Count == 0)
@@ -78,6 +75,7 @@ namespace DotNetUniversalPatcher.UI
                 {
                     ofd.Filter = "Executable files (.exe;*.dll)|*.exe;*.dll|All files (*.*)|*.*";
                     ofd.CheckFileExists = true;
+                    ofd.RestoreDirectory = true;
 
                     if (ofd.ShowDialog() == DialogResult.OK)
                     {
@@ -192,8 +190,9 @@ namespace DotNetUniversalPatcher.UI
             {
                 using (var ofd = new OpenFileDialog())
                 {
-                    ofd.Filter = "DNUP files (.dnup)|*.dnup|All files (*.*)|*.*";
+                    ofd.Filter = $"DNUP files (.{Constants.ScriptFileExtension})|*.{Constants.ScriptFileExtension}|All files (*.*)|*.*";
                     ofd.CheckFileExists = true;
+                    ofd.RestoreDirectory = true;
 
                     if (ofd.ShowDialog() == DialogResult.OK)
                     {
@@ -377,7 +376,7 @@ namespace DotNetUniversalPatcher.UI
             {
                 _selectedTargetFileIndex = dgvTargetFiles.SelectedRows[0].Index;
 
-                txtFilePath.Text = dgvTargetFiles.SelectedRows[0].Cells[0].Value.ToString().EmptyIfNull();
+                txtFilePath.Text = dgvTargetFiles.SelectedRows[0].Cells[0].Value?.ToString().EmptyIfNull();
 
                 btnAddTargetFile.Text = "Update";
             }
@@ -532,9 +531,10 @@ namespace DotNetUniversalPatcher.UI
 
                 using (var sfd = new SaveFileDialog())
                 {
-                    sfd.Filter = "DNUP files (.dnup)|*.dnup|All files (*.*)|*.*";
+                    sfd.Filter = $"DNUP files (.{Constants.ScriptFileExtension})|*.{Constants.ScriptFileExtension}|All files (*.*)|*.*";
+                    sfd.FileName = $"{Script.PatcherOptions.PatcherInfo.Software}.{Constants.ScriptFileExtension}";
+                    sfd.InitialDirectory = Constants.PatchersDir;
                     sfd.OverwritePrompt = true;
-                    sfd.FileName = $"{Script.PatcherOptions.PatcherInfo.Software}.dnup";
 
                     if (sfd.ShowDialog() == DialogResult.OK)
                     {
@@ -705,7 +705,7 @@ namespace DotNetUniversalPatcher.UI
 
             foreach (DataGridViewRow dgvr in dgvTargetFiles.Rows)
             {
-                PatchList[selectedPatchIndex].TargetInfo.TargetFiles.Add(dgvr.Cells[0].Value.ToString());
+                PatchList[selectedPatchIndex].TargetInfo.TargetFiles.Add(dgvr.Cells[0].Value?.ToString());
             }
         }
     }

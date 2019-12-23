@@ -8,7 +8,7 @@ namespace DotNetUniversalPatcher.UI
 {
     public partial class FrmAbout : Form
     {
-        internal static FrmAbout Instance = new FrmAbout();
+        internal static FrmAbout Instance { get; } = new FrmAbout();
 
         internal string AboutScriptText;
 
@@ -23,6 +23,7 @@ namespace DotNetUniversalPatcher.UI
             {
                 rtbAboutText.Text = AboutScriptText;
                 btnShowAboutText.Visible = true;
+                btnShowAboutText.Text = "About DNUP";
             }
             else
             {

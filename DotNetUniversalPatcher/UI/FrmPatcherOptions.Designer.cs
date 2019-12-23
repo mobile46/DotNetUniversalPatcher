@@ -67,9 +67,9 @@
             this.tsmiRemovePlaceholder = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiMoveUpPlaceholder = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiMoveDownPlaceholder = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tpReservedPlaceholders = new System.Windows.Forms.TabPage();
             this.grpReservedPlaceholers = new System.Windows.Forms.GroupBox();
-            this.dgvReservedPlaceholers = new System.Windows.Forms.DataGridView();
+            this.dgvReservedPlaceholders = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -84,9 +84,9 @@
             this.grpPlaceholders.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlaceholders)).BeginInit();
             this.cmsPlaceholders.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tpReservedPlaceholders.SuspendLayout();
             this.grpReservedPlaceholers.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvReservedPlaceholers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReservedPlaceholders)).BeginInit();
             this.SuspendLayout();
             // 
             // flpMain
@@ -106,7 +106,7 @@
             // 
             this.tabPatcherOptions.Controls.Add(this.tpPatcherOptions);
             this.tabPatcherOptions.Controls.Add(this.tpPlaceholders);
-            this.tabPatcherOptions.Controls.Add(this.tabPage1);
+            this.tabPatcherOptions.Controls.Add(this.tpReservedPlaceholders);
             this.tabPatcherOptions.Location = new System.Drawing.Point(11, 3);
             this.tabPatcherOptions.Name = "tabPatcherOptions";
             this.tabPatcherOptions.SelectedIndex = 0;
@@ -452,20 +452,20 @@
             this.tsmiMoveDownPlaceholder.Text = "Move Down";
             this.tsmiMoveDownPlaceholder.Click += new System.EventHandler(this.TsmiMoveDownPlaceholder_Click);
             // 
-            // tabPage1
+            // tpReservedPlaceholders
             // 
-            this.tabPage1.Controls.Add(this.grpReservedPlaceholers);
-            this.tabPage1.Location = new System.Drawing.Point(4, 26);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(483, 413);
-            this.tabPage1.TabIndex = 2;
-            this.tabPage1.Text = "Reserved Placeholders";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tpReservedPlaceholders.Controls.Add(this.grpReservedPlaceholers);
+            this.tpReservedPlaceholders.Location = new System.Drawing.Point(4, 26);
+            this.tpReservedPlaceholders.Name = "tpReservedPlaceholders";
+            this.tpReservedPlaceholders.Padding = new System.Windows.Forms.Padding(3);
+            this.tpReservedPlaceholders.Size = new System.Drawing.Size(483, 413);
+            this.tpReservedPlaceholders.TabIndex = 2;
+            this.tpReservedPlaceholders.Text = "Reserved Placeholders";
+            this.tpReservedPlaceholders.UseVisualStyleBackColor = true;
             // 
             // grpReservedPlaceholers
             // 
-            this.grpReservedPlaceholers.Controls.Add(this.dgvReservedPlaceholers);
+            this.grpReservedPlaceholers.Controls.Add(this.dgvReservedPlaceholders);
             this.grpReservedPlaceholers.Location = new System.Drawing.Point(6, 6);
             this.grpReservedPlaceholers.Name = "grpReservedPlaceholers";
             this.grpReservedPlaceholers.Size = new System.Drawing.Size(465, 397);
@@ -473,27 +473,28 @@
             this.grpReservedPlaceholers.TabStop = false;
             this.grpReservedPlaceholers.Text = "Reserved Placeholders";
             // 
-            // dgvReservedPlaceholers
+            // dgvReservedPlaceholders
             // 
-            this.dgvReservedPlaceholers.AllowUserToAddRows = false;
-            this.dgvReservedPlaceholers.AllowUserToDeleteRows = false;
-            this.dgvReservedPlaceholers.AllowUserToResizeRows = false;
-            this.dgvReservedPlaceholers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvReservedPlaceholers.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvReservedPlaceholers.BackgroundColor = System.Drawing.Color.White;
-            this.dgvReservedPlaceholers.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvReservedPlaceholers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvReservedPlaceholers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvReservedPlaceholders.AllowUserToAddRows = false;
+            this.dgvReservedPlaceholders.AllowUserToDeleteRows = false;
+            this.dgvReservedPlaceholders.AllowUserToResizeRows = false;
+            this.dgvReservedPlaceholders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvReservedPlaceholders.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvReservedPlaceholders.BackgroundColor = System.Drawing.Color.White;
+            this.dgvReservedPlaceholders.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvReservedPlaceholders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvReservedPlaceholders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2});
-            this.dgvReservedPlaceholers.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvReservedPlaceholers.Location = new System.Drawing.Point(9, 21);
-            this.dgvReservedPlaceholers.MultiSelect = false;
-            this.dgvReservedPlaceholers.Name = "dgvReservedPlaceholers";
-            this.dgvReservedPlaceholers.RowHeadersVisible = false;
-            this.dgvReservedPlaceholers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvReservedPlaceholers.Size = new System.Drawing.Size(447, 370);
-            this.dgvReservedPlaceholers.TabIndex = 0;
+            this.dgvReservedPlaceholders.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvReservedPlaceholders.Location = new System.Drawing.Point(9, 21);
+            this.dgvReservedPlaceholders.MultiSelect = false;
+            this.dgvReservedPlaceholders.Name = "dgvReservedPlaceholders";
+            this.dgvReservedPlaceholders.RowHeadersVisible = false;
+            this.dgvReservedPlaceholders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvReservedPlaceholders.Size = new System.Drawing.Size(447, 370);
+            this.dgvReservedPlaceholders.TabIndex = 0;
+            this.dgvReservedPlaceholders.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.DgvReservedPlaceholders_MouseDoubleClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -556,9 +557,9 @@
             this.grpPlaceholders.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlaceholders)).EndInit();
             this.cmsPlaceholders.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
+            this.tpReservedPlaceholders.ResumeLayout(false);
             this.grpReservedPlaceholers.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvReservedPlaceholers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReservedPlaceholders)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -604,9 +605,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcPlaceholderValue;
         private System.Windows.Forms.ToolStripMenuItem tsmiMoveUpPlaceholder;
         private System.Windows.Forms.ToolStripMenuItem tsmiMoveDownPlaceholder;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tpReservedPlaceholders;
         private System.Windows.Forms.GroupBox grpReservedPlaceholers;
-        private System.Windows.Forms.DataGridView dgvReservedPlaceholers;
+        private System.Windows.Forms.DataGridView dgvReservedPlaceholders;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
     }

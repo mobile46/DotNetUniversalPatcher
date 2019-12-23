@@ -22,7 +22,7 @@ namespace DotNetUniversalPatcher.Utilities
         internal static readonly string RangeExpressionSeparator = "...";
         internal static readonly string RangeExpressionRegexPattern = @"\.\.\.";
 
-        internal static readonly string PlaceholderPattern = @"(?<!#)(#[^#\s]+#)(?!#)";
+        internal static readonly string PlaceholderPattern = "(?<!#)(#[^#]+#)(?!#)";
         internal static readonly string ScriptFilePattern = $"*.{ScriptFileExtension}";
     }
 }

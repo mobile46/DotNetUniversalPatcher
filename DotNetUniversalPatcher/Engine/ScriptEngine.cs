@@ -31,6 +31,8 @@ namespace DotNetUniversalPatcher.Engine
         {
             try
             {
+                Logger.ClearLogs();
+
                 string[] scriptFiles = Directory.GetFiles(Constants.PatchersDir, Constants.ScriptFilePattern, SearchOption.TopDirectoryOnly).Select(Path.GetFullPath).ToArray();
 
                 foreach (string file in scriptFiles)
@@ -60,19 +62,42 @@ namespace DotNetUniversalPatcher.Engine
                         FrmMain.Instance.grpReleaseInfo.Enabled = true;
                     }
                 }
-
-                if (LoadedScripts.Count > 0)
-                {
-                    FrmMain.Instance.grpPatcherInfo.Enabled = true;
-                    FrmMain.Instance.grpReleaseInfo.Enabled = true;
-                    FrmMain.Instance.txtReleaseInfo.Enabled = true;
-                    FrmMain.Instance.chkMakeBackup.Enabled = true;
-                    FrmMain.Instance.btnPatch.Enabled = true;
-                }
+            }
+            catch (DirectoryNotFoundException ex)
+            {
+                Logger.Error($"Patchers folder not found. \r\n{(Program.IsDebugModeEnabled ? "\r\n" : string.Empty)}{ex.Message}{(Program.IsDebugModeEnabled ? $"\r\n{ex.StackTrace}" : string.Empty)}");
+                IsLoadingError = true;
+                FrmMain.Instance.grpReleaseInfo.Enabled = true;
             }
             catch
             {
                 // ignored
+            }
+
+            if (LoadedScripts.Count > 0)
+            {
+                FrmMain.Instance.grpPatcherInfo.Enabled = true;
+                FrmMain.Instance.grpReleaseInfo.Enabled = true;
+                FrmMain.Instance.txtReleaseInfo.Enabled = true;
+                FrmMain.Instance.chkMakeBackup.Enabled = true;
+                FrmMain.Instance.btnPatch.Enabled = true;
+            }
+            else
+            {
+                FrmMain.Instance.grpPatcherInfo.Enabled = false;
+                FrmMain.Instance.txtReleaseInfo.Enabled = false;
+                FrmMain.Instance.chkMakeBackup.Enabled = false;
+                FrmMain.Instance.btnPatch.Enabled = false;
+
+                FrmMain.Instance.txtTargetFiles.Clear();
+                FrmMain.Instance.txtAuthor.Clear();
+                FrmMain.Instance.txtWebsite.Clear();
+                FrmMain.Instance.txtReleaseDate.Clear();
+                FrmMain.Instance.txtReleaseInfo.Clear();
+
+                FrmMain.Instance.chkMakeBackup.Checked = false;
+
+                RefreshTargetFilesText();
             }
         }
 
@@ -80,7 +105,7 @@ namespace DotNetUniversalPatcher.Engine
         {
             CurrentScript = LoadedScripts[FrmMain.Instance.cmbSoftware.SelectedIndex];
 
-            FrmMain.Instance.lblTargetFiles.Text = $"Target Files ({CurrentScript.TargetFilesCount}):";
+            RefreshTargetFilesText();
         }
 
         public override void Process()
@@ -174,6 +199,11 @@ namespace DotNetUniversalPatcher.Engine
             ScriptEngineHelpers.PatchTarget(p, target);
 
             ScriptEngineHelpers.WriteActionToLog(target);
+        }
+
+        private void RefreshTargetFilesText()
+        {
+            FrmMain.Instance.lblTargetFiles.Text = $"Target Files ({CurrentScript.TargetFilesCount}):";
         }
     }
 }

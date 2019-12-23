@@ -12,7 +12,7 @@ using System.Text;
 
 namespace DotNetUniversalPatcher.Engine
 {
-    internal class ScriptEngineHelpers
+    internal static class ScriptEngineHelpers
     {
         internal static readonly ModuleDefMD MscorelibModule = ModuleDefMD.Load(typeof(void).Module);
 
@@ -179,7 +179,6 @@ namespace DotNetUniversalPatcher.Engine
                             break;
                     }
                 }
-
             }
 
             target.ILCodes = null; //We don't need that anymore.
@@ -334,7 +333,7 @@ namespace DotNetUniversalPatcher.Engine
                     {
                         for (int i = 0; i < target.Indices.Count; i++)
                         {
-                            var index = target.Indices[i].ToString().MultipleReplace();
+                            var index = target.Indices[i].MultipleReplace();
 
                             if (index.Contains(Constants.RangeExpressionSeparator))
                             {

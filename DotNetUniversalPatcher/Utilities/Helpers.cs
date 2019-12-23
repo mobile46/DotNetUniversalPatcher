@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Security.Principal;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -41,7 +42,7 @@ namespace DotNetUniversalPatcher.Utilities
 #else
             string[] args = Environment.GetCommandLineArgs();
 
-            if (args.Length == 2 && args[1].ToLowerInvariant() == "/debug")
+            if (args.Length == 2 && string.Equals(args[1], "/debug", StringComparison.InvariantCultureIgnoreCase))
             {
                 Program.IsDebugModeEnabled = true;
             }
@@ -53,7 +54,7 @@ namespace DotNetUniversalPatcher.Utilities
             bool result;
             try
             {
-                using (WindowsIdentity current = WindowsIdentity.GetCurrent())
+                using (var current = WindowsIdentity.GetCurrent())
                 {
                     result = new WindowsPrincipal(current).IsInRole(WindowsBuiltInRole.Administrator);
                 }
@@ -63,6 +64,25 @@ namespace DotNetUniversalPatcher.Utilities
                 result = false;
             }
             return result;
+        }
+
+        internal static string BuildTitle()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append(Constants.TitleAndVersion);
+
+            if (Program.IsDebugModeEnabled)
+            {
+                sb.Append(" (Debug)");
+            }
+
+            if (Helpers.IsAdministrator())
+            {
+                sb.Append(" (Administrator)");
+            }
+
+            return sb.ToString();
         }
 
         internal static string GetProgramFilesPath(bool getX86 = false)
@@ -116,7 +136,7 @@ namespace DotNetUniversalPatcher.Utilities
             }
         }
 
-        public static DialogResult CustomMessageBox(string text, bool error = false)
+        internal static DialogResult CustomMessageBox(string text, bool error = false)
         {
             if (error)
             {
@@ -126,9 +146,21 @@ namespace DotNetUniversalPatcher.Utilities
             return MessageBox.Show(text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        public static DialogResult ExceptionMessageBox(Exception ex)
+        internal static DialogResult ExceptionMessageBox(Exception ex)
         {
             return MessageBox.Show($"{ex.Message}{(Program.IsDebugModeEnabled ? $"\r\n\r\nStack Trace:\r\n{ex.StackTrace}" : string.Empty)}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        internal static void CopyTextToClipboard(string text)
+        {
+            try
+            {
+                Clipboard.SetText(text);
+            }
+            catch
+            {
+                // ignored
+            }
         }
     }
 }

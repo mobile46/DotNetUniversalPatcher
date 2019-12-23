@@ -54,14 +54,15 @@ namespace DotNetUniversalPatcher.UI
             this.btnExit = new System.Windows.Forms.Button();
             this.tipLogItem = new System.Windows.Forms.ToolTip(this.components);
             this.tipTargetFiles = new System.Windows.Forms.ToolTip(this.components);
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.scriptEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.msMain = new System.Windows.Forms.MenuStrip();
+            this.tsmiScriptEditor = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiRefresh = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
             this.flpMain.SuspendLayout();
             this.grpPatcherInfo.SuspendLayout();
             this.grpReleaseInfo.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
+            this.msMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // flpMain
@@ -276,38 +277,47 @@ namespace DotNetUniversalPatcher.UI
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
-            // menuStrip1
+            // msMain
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.scriptEditorToolStripMenuItem,
-            this.aboutToolStripMenuItem,
-            this.exitToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(454, 24);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
+            this.msMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiScriptEditor,
+            this.tsmiRefresh,
+            this.tsmiAbout,
+            this.tsmiExit});
+            this.msMain.Location = new System.Drawing.Point(0, 0);
+            this.msMain.Name = "msMain";
+            this.msMain.Size = new System.Drawing.Size(454, 24);
+            this.msMain.TabIndex = 1;
+            this.msMain.Text = "menuStrip1";
             // 
-            // scriptEditorToolStripMenuItem
+            // tsmiScriptEditor
             // 
-            this.scriptEditorToolStripMenuItem.Name = "scriptEditorToolStripMenuItem";
-            this.scriptEditorToolStripMenuItem.Size = new System.Drawing.Size(83, 20);
-            this.scriptEditorToolStripMenuItem.Text = "Script Editor";
-            this.scriptEditorToolStripMenuItem.Click += new System.EventHandler(this.ScriptEditorToolStripMenuItem_Click);
+            this.tsmiScriptEditor.Name = "tsmiScriptEditor";
+            this.tsmiScriptEditor.Size = new System.Drawing.Size(83, 20);
+            this.tsmiScriptEditor.Text = "Script Editor";
+            this.tsmiScriptEditor.Click += new System.EventHandler(this.TsmiScriptEditor_Click);
             // 
-            // aboutToolStripMenuItem
+            // tsmiRefresh
             // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
-            this.aboutToolStripMenuItem.Text = "About";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.BtnAbout_Click);
+            this.tsmiRefresh.Name = "tsmiRefresh";
+            this.tsmiRefresh.ShortcutKeys = System.Windows.Forms.Keys.F5;
+            this.tsmiRefresh.Size = new System.Drawing.Size(58, 20);
+            this.tsmiRefresh.Text = "Refresh";
+            this.tsmiRefresh.Click += new System.EventHandler(this.TsmiRefresh_Click);
             // 
-            // exitToolStripMenuItem
+            // tsmiAbout
             // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.BtnExit_Click);
+            this.tsmiAbout.Name = "tsmiAbout";
+            this.tsmiAbout.Size = new System.Drawing.Size(52, 20);
+            this.tsmiAbout.Text = "About";
+            this.tsmiAbout.Click += new System.EventHandler(this.TsmiAbout_Click);
+            // 
+            // tsmiExit
+            // 
+            this.tsmiExit.Name = "tsmiExit";
+            this.tsmiExit.Size = new System.Drawing.Size(38, 20);
+            this.tsmiExit.Text = "Exit";
+            this.tsmiExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
             // FrmMain
             // 
@@ -315,7 +325,7 @@ namespace DotNetUniversalPatcher.UI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(454, 385);
             this.Controls.Add(this.flpMain);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.msMain);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -331,8 +341,8 @@ namespace DotNetUniversalPatcher.UI
             this.grpPatcherInfo.PerformLayout();
             this.grpReleaseInfo.ResumeLayout(false);
             this.grpReleaseInfo.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.msMain.ResumeLayout(false);
+            this.msMain.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -343,17 +353,17 @@ namespace DotNetUniversalPatcher.UI
         private FlowLayoutPanel flpMain;
         private Label lblSoftware;
         private Label lblAuthor;
-        private TextBox txtAuthor;
+        internal TextBox txtAuthor;
         private Label lblWebsite;
-        private TextBox txtWebsite;
+        internal TextBox txtWebsite;
         private Label lblReleaseDate;
-        private TextBox txtReleaseDate;
+        internal TextBox txtReleaseDate;
         internal TextBox txtReleaseInfo;
         private Button btnAbout;
         private Button btnExit;
         internal CheckBox chkMakeBackup;
         internal GroupBox grpReleaseInfo;
-        private TextBox txtTargetFiles;
+        internal TextBox txtTargetFiles;
         internal Label lblTargetFiles;
         internal ListBox lstLog;
         private ToolTip tipLogItem;
@@ -361,10 +371,11 @@ namespace DotNetUniversalPatcher.UI
         internal ComboBox cmbSoftware;
         internal GroupBox grpPatcherInfo;
         internal Button btnPatch;
-        private MenuStrip menuStrip1;
-        private ToolStripMenuItem aboutToolStripMenuItem;
-        private ToolStripMenuItem exitToolStripMenuItem;
-        private ToolStripMenuItem scriptEditorToolStripMenuItem;
+        private MenuStrip msMain;
+        private ToolStripMenuItem tsmiAbout;
+        private ToolStripMenuItem tsmiExit;
+        private ToolStripMenuItem tsmiScriptEditor;
+        private ToolStripMenuItem tsmiRefresh;
     }
 }
 

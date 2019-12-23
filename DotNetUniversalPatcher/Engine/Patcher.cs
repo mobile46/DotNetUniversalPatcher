@@ -62,9 +62,9 @@ namespace DotNetUniversalPatcher.Engine
                 {
                     for (int i = 0; i < target.Indices.Count; i++)
                     {
-                        if (target.Indices[i].ToString().Contains(Constants.RangeExpressionSeparator))
+                        if (target.Indices[i].Contains(Constants.RangeExpressionSeparator))
                         {
-                            string[] startAndEnd = Regex.Split(target.Indices[i].ToString(), Constants.RangeExpressionRegexPattern);
+                            string[] startAndEnd = Regex.Split(target.Indices[i], Constants.RangeExpressionRegexPattern);
 
                             int start = startAndEnd[0].ToInt();
                             int end = startAndEnd[1].ToInt();
@@ -95,7 +95,7 @@ namespace DotNetUniversalPatcher.Engine
                         }
                         else
                         {
-                            Instructions.Insert(target.Indices[i].ToString().ToInt(), target.Instructions[i]);
+                            Instructions.Insert(target.Indices[i].ToInt(), target.Instructions[i]);
                         }
                     }
                 }
@@ -122,9 +122,9 @@ namespace DotNetUniversalPatcher.Engine
                 {
                     for (int i = 0; i < target.Indices.Count; i++)
                     {
-                        if (target.Indices[i].ToString().Contains(Constants.RangeExpressionSeparator))
+                        if (target.Indices[i].Contains(Constants.RangeExpressionSeparator))
                         {
-                            string[] startAndEnd = Regex.Split(target.Indices[i].ToString(), Constants.RangeExpressionRegexPattern);
+                            string[] startAndEnd = Regex.Split(target.Indices[i], Constants.RangeExpressionRegexPattern);
 
                             int start = startAndEnd[0].ToInt();
                             int end = startAndEnd[1].ToInt();
@@ -153,7 +153,7 @@ namespace DotNetUniversalPatcher.Engine
                         }
                         else
                         {
-                            Instructions[target.Indices[i].ToString().ToInt()] = target.Instructions[i];
+                            Instructions[target.Indices[i].ToInt()] = target.Instructions[i];
                         }
                     }
                 }

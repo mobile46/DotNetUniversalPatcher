@@ -1,14 +1,15 @@
 ﻿using DotNetUniversalPatcher.Engine;
+using DotNetUniversalPatcher.Models;
 using DotNetUniversalPatcher.Utilities;
 using System;
-using System.Text;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace DotNetUniversalPatcher.UI
 {
     public partial class FrmMain : Form
     {
-        public static FrmMain Instance;
+        internal static FrmMain Instance { get; set; }
 
         internal IScriptEngine Engine;
 
@@ -19,29 +20,18 @@ namespace DotNetUniversalPatcher.UI
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            Text = BuildTitle();
+            Text = Helpers.BuildTitle();
 
             Engine = new ScriptEngine();
 
             ScriptEngineHelpers.AddSpecialFoldersToPlaceholders();
 
-            Engine.LoadAndParseScripts();
-
-            cmbSoftware.Items.AddRange(Engine.GetSoftwareNames());
-
-            if (cmbSoftware.Items.Count > 0)
-            {
-                cmbSoftware.SelectedIndex = 0;
-            }
-            else
-            {
-                SetLogVisible(Engine.IsLoadingError, Engine.IsLoadingError);
-            }
+            RefreshScripts();
         }
 
         private void BtnPatch_Click(object sender, EventArgs e)
         {
-            if (cmbSoftware.Items.Count > 0)
+            if (cmbSoftware.SelectedIndex > -1)
             {
                 btnPatch.Enabled = false;
 
@@ -77,7 +67,7 @@ namespace DotNetUniversalPatcher.UI
 
         private void CmbSoftware_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbSoftware.Items.Count > 0)
+            if (cmbSoftware.SelectedIndex > -1)
             {
                 Engine.ChangeScript();
 
@@ -136,14 +126,44 @@ namespace DotNetUniversalPatcher.UI
         {
             if (e.Control && e.KeyCode == Keys.C && lstLog.Items.Count > 0)
             {
-                try
-                {
-                    Clipboard.SetText(lstLog.Items[lstLog.SelectedIndex].ToString());
-                }
-                catch
-                {
-                    // ignored
-                }
+                Helpers.CopyTextToClipboard(lstLog.Items[lstLog.SelectedIndex].ToString());
+            }
+        }
+
+        private void TsmiScriptEditor_Click(object sender, EventArgs e)
+        {
+            FrmScriptEditor.Instance.ShowDialog();
+        }
+
+        private void TsmiRefresh_Click(object sender, EventArgs e)
+        {
+            RefreshScripts();
+        }
+
+        private void TsmiAbout_Click(object sender, EventArgs e)
+        {
+            FrmAbout.Instance.AboutScriptText = null;
+            FrmAbout.Instance.ShowDialog();
+        }
+
+        private void RefreshScripts()
+        {
+            Engine.LoadedScripts = new List<PatcherScript>();
+            Engine.CurrentScript = new PatcherScript();
+
+            Engine.LoadAndParseScripts();
+
+            cmbSoftware.Items.Clear();
+
+            cmbSoftware.Items.AddRange(Engine.GetSoftwareNames());
+
+            if (cmbSoftware.Items.Count > 0)
+            {
+                cmbSoftware.SelectedIndex = 0;
+            }
+            else
+            {
+                SetLogVisible(Engine.IsLoadingError, Engine.IsLoadingError);
             }
         }
 
@@ -168,30 +188,6 @@ namespace DotNetUniversalPatcher.UI
                 grpReleaseInfo.Text = "Release Info";
                 lstLog.Visible = false;
             }
-        }
-
-        private string BuildTitle()
-        {
-            StringBuilder sb = new StringBuilder();
-
-            sb.Append(Constants.TitleAndVersion);
-
-            if (Program.IsDebugModeEnabled)
-            {
-                sb.Append(" (Debug)");
-            }
-
-            if (Helpers.IsAdministrator())
-            {
-                sb.Append(" (Administrator)");
-            }
-
-            return sb.ToString();
-        }
-
-        private void ScriptEditorToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FrmScriptEditor.Instance.ShowDialog();
         }
     }
 }

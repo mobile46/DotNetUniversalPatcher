@@ -1,15 +1,15 @@
-﻿using DotNetUniversalPatcher.Extensions;
+﻿using DotNetUniversalPatcher.Engine;
+using DotNetUniversalPatcher.Extensions;
 using DotNetUniversalPatcher.Models;
 using DotNetUniversalPatcher.Utilities;
 using System;
 using System.Windows.Forms;
-using DotNetUniversalPatcher.Engine;
 
 namespace DotNetUniversalPatcher.UI
 {
     public partial class FrmPatcherOptions : Form
     {
-        internal static FrmPatcherOptions Instance = new FrmPatcherOptions();
+        internal static FrmPatcherOptions Instance { get; } = new FrmPatcherOptions();
 
         private int _selectedPlaceholderIndex;
 
@@ -49,11 +49,11 @@ namespace DotNetUniversalPatcher.UI
                 }
             }
 
-            if (dgvPlaceholders.Rows.Count == 0)
+            if (dgvReservedPlaceholders.Rows.Count == 0)
             {
                 foreach (var placeholder in ScriptEngineHelpers.ReservedPlaceholders)
                 {
-                    dgvReservedPlaceholers.Rows.Add(placeholder.Key, placeholder.Value);
+                    dgvReservedPlaceholders.Rows.Add(placeholder.Key, placeholder.Value);
                 }
             }
 
@@ -105,7 +105,7 @@ namespace DotNetUniversalPatcher.UI
 
         private void BtnClear_Click(object sender, EventArgs e)
         {
-            if (txtPlaceholderKey.TextLength > 0 || txtPlaceholderValue.TextAlign > 0)
+            if (txtPlaceholderKey.TextLength > 0 || txtPlaceholderValue.TextLength > 0)
             {
                 txtPlaceholderKey.Text = string.Empty;
                 txtPlaceholderValue.Text = string.Empty;
@@ -150,11 +150,11 @@ namespace DotNetUniversalPatcher.UI
 
             foreach (DataGridViewRow dgvr in dgvPlaceholders.Rows)
             {
-                string key = dgvr.Cells[0].Value.ToString().Replace("#", string.Empty);
+                string key = dgvr.Cells[0].Value?.ToString().Replace("#", string.Empty);
 
                 if (!FrmScriptEditor.Instance.Script.PatcherOptions.Placeholders.ContainsKey(key))
                 {
-                    FrmScriptEditor.Instance.Script.PatcherOptions.Placeholders.Add(key, dgvr.Cells[1].Value.ToString());
+                    FrmScriptEditor.Instance.Script.PatcherOptions.Placeholders.Add(key, dgvr.Cells[1].Value?.ToString());
                 }
                 else
                 {
@@ -181,8 +181,8 @@ namespace DotNetUniversalPatcher.UI
             {
                 _selectedPlaceholderIndex = dgvPlaceholders.SelectedRows[0].Index;
 
-                txtPlaceholderKey.Text = dgvPlaceholders.Rows[_selectedPlaceholderIndex].Cells[0].Value.ToString().EmptyIfNull();
-                txtPlaceholderValue.Text = dgvPlaceholders.Rows[_selectedPlaceholderIndex].Cells[1].Value.ToString().EmptyIfNull();
+                txtPlaceholderKey.Text = dgvPlaceholders.Rows[_selectedPlaceholderIndex].Cells[0].Value?.ToString().EmptyIfNull();
+                txtPlaceholderValue.Text = dgvPlaceholders.Rows[_selectedPlaceholderIndex].Cells[1].Value?.ToString().EmptyIfNull();
 
                 btnAddPlaceholder.Text = "Update";
             }
@@ -208,7 +208,7 @@ namespace DotNetUniversalPatcher.UI
             {
                 dgvPlaceholders.MoveUp();
 
-                ResetAddPloceholder();
+                ResetAddPlaceholder();
             }
         }
 
@@ -218,17 +218,22 @@ namespace DotNetUniversalPatcher.UI
             {
                 dgvPlaceholders.MoveDown();
 
-                ResetAddPloceholder();
+                ResetAddPlaceholder();
             }
         }
 
-        private void ResetAddPloceholder()
+        private void ResetAddPlaceholder()
         {
             if (btnAddPlaceholder.Text == "Update")
             {
                 btnAddPlaceholder.Text = "Add";
                 _selectedPlaceholderIndex = -1;
             }
+        }
+
+        private void DgvReservedPlaceholders_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Helpers.CopyTextToClipboard(dgvReservedPlaceholders.SelectedRows[0].Cells[0].Value.ToString());
         }
     }
 }

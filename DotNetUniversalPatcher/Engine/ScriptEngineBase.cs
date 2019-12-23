@@ -5,8 +5,8 @@ namespace DotNetUniversalPatcher.Engine
 {
     internal abstract class ScriptEngineBase : IScriptEngine
     {
-        public List<PatcherScript> LoadedScripts { get; } = new List<PatcherScript>();
-        public PatcherScript CurrentScript { get; set; } = new PatcherScript();
+        public List<PatcherScript> LoadedScripts { get; set; }
+        public PatcherScript CurrentScript { get; set; }
         public bool IsLoadingError { get; set; }
 
         public abstract void LoadAndParseScripts();
