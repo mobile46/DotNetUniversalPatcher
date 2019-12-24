@@ -12,7 +12,7 @@ You can download the latest release from [release page](https://github.com/mobil
 
 ## Download DotNet Universal Patcher Helper (dnSpy Extension)
 
-You can download the dnSpy Extension from [here](https://github.com/mobile46/DotNetUniversalPatcher/dnSpy-Extension)
+You can download the dnSpy Extension from [here](https://github.com/mobile46/DotNetUniversalPatcher/tree/master/dnSpy-Extension)
 
 ## Credits
 
