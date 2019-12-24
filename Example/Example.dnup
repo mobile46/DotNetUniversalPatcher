@@ -1,0 +1,73 @@
+{
+  "PatcherOptions": {
+    "PatcherInfo": {
+      "Software": "Test",
+      "Author": "Mobile46",
+      "Website": "Decompile.us",
+      "ReleaseDate": "24.12.2019",
+      "ReleaseInfo": "Demo",
+      "AboutText": "Hello",
+      "MakeBackup": true
+    },
+    "Placeholders": {
+      "MyValue": "Hello World!"
+    }
+  },
+  "PatchList": [
+    {
+      "TargetInfo": {
+        "TargetFiles": [
+          "#DESKTOP#\\DnupDemo.exe"
+        ]
+      },
+      "TargetList": [
+        {
+          "FullName": "System.Boolean DnupDemo.Form1::get_IsRegistered()",
+          "Action": "ReturnBody",
+          "Optional": "True"
+        },
+        {
+          "FullName": "System.Void DnupDemo.Form1::Form1_Load(System.Object,System.EventArgs)",
+          "Instructions": [
+            {
+              "OpCode": "ldc.i4.3"
+            },
+            {
+              "OpCode": "ldc.i4.0"
+            }
+          ],
+          "Indices": [
+            "2",
+            "6"
+          ],
+          "Action": "Replace"
+        },
+        {
+          "FullName": "System.Void DnupDemo.Form1::InitializeComponent()",
+          "Instructions": [
+            {
+              "OpCode": "ldstr",
+              "Operand": "#MyValue#"
+            },
+            {
+              "OpCode": "ldc.i4.1"
+            },
+            {
+              "OpCode": "ldc.i4.1"
+            },
+            {
+              "OpCode": "ldc.i4.1"
+            }
+          ],
+          "Indices": [
+            "208",
+            "327",
+            "378",
+            "212"
+          ],
+          "Action": "Replace"
+        }
+      ]
+    }
+  ]
+}
