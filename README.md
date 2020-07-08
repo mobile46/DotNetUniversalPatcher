@@ -1,4 +1,5 @@
 # DotNet Universal Patcher ![GitHub](https://img.shields.io/github/license/mobile46/DotNetUniversalPatcher) ![GitHub All Releases](https://img.shields.io/github/downloads/mobile46/DotNetUniversalPatcher/total)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fmobile46%2FDotNetUniversalPatcher.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fmobile46%2FDotNetUniversalPatcher?ref=badge_shield)
 
 An .NET Patcher written in C# that implements the dnlib and dnpatch libraries.
 
@@ -30,3 +31,5 @@ You can download the dnSpy Extension from [here](https://github.com/mobile46/Dot
 ## License
 
 DotNet Universal Patcher is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fmobile46%2FDotNetUniversalPatcher.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fmobile46%2FDotNetUniversalPatcher?ref=badge_large)
