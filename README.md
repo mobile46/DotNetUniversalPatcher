@@ -1,10 +1,10 @@
 # DotNet Universal Patcher ![GitHub](https://img.shields.io/github/license/mobile46/DotNetUniversalPatcher) ![GitHub All Releases](https://img.shields.io/github/downloads/mobile46/DotNetUniversalPatcher/total)
 
-An .NET Patcher written in C# that implements the dnlib and dnpatch libraries.
+A .NET Patcher written in C# that implements the dnlib and dnpatch libraries.
 
 ## How to Create Your Own DNUP Script?
 
-[![How to Create Your Own Script on DotNet Universal Patcher?](http://img.youtube.com/vi/T4bspvI7Iuk/0.jpg)](https://www.youtube.com/watch?v=T4bspvI7Iuk "How to Create Your Own Script on DotNet Universal Patcher?")
+[![How to Create Your Own Script on DotNet Universal Patcher?](http://img.youtube.com/vi/2IQ-UHmOQqE/0.jpg)](https://www.youtube.com/watch?v=2IQ-UHmOQqE "How to Create Your Own Script on DotNet Universal Patcher?")
 
 ## Download
 
@@ -23,9 +23,9 @@ You can download the dnSpy Extension from [here](https://github.com/mobile46/Dot
 
 ## Special Thanks
 
-- [Yildo](http://www.decompile.us/forum/murid-yildo)
-- [Cyber](http://www.decompile.us/forum/murid-cyber)
-- [Forensic](http://www.decompile.us/forum/murid-Forensic)
+- [Yildo](https://decompile.us/dec/murid-yildo)
+- [Cyber](https://decompile.us/dec/murid-cyber)
+- [Forensic](https://decompile.us/dec/murid-Forensic)
 
 ## License
 
