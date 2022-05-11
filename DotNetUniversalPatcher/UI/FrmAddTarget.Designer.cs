@@ -1,4 +1,6 @@
-﻿namespace DotNetUniversalPatcher.UI
+﻿using DotNetUniversalPatcher.Properties;
+
+namespace DotNetUniversalPatcher.UI
 {
     partial class FrmAddTarget
     {
@@ -86,7 +88,7 @@
             this.lblAction.Name = "lblAction";
             this.lblAction.Size = new System.Drawing.Size(47, 17);
             this.lblAction.TabIndex = 2;
-            this.lblAction.Text = "Action:";
+            this.lblAction.Text = Resources.FrmAddTarget_Action_Text;
             // 
             // txtFullName
             // 
@@ -102,7 +104,7 @@
             this.lblFullName.Name = "lblFullName";
             this.lblFullName.Size = new System.Drawing.Size(69, 17);
             this.lblFullName.TabIndex = 0;
-            this.lblFullName.Text = "Full Name:";
+            this.lblFullName.Text = Resources.FrmAddTarget_Full_Name_Text;
             // 
             // lblIndex
             // 
@@ -111,7 +113,7 @@
             this.lblIndex.Name = "lblIndex";
             this.lblIndex.Size = new System.Drawing.Size(42, 17);
             this.lblIndex.TabIndex = 0;
-            this.lblIndex.Text = "Index:";
+            this.lblIndex.Text = Resources.FrmAddTarget_Index_Text;
             // 
             // txtIndex
             // 
@@ -127,7 +129,7 @@
             this.lblOpCode.Name = "lblOpCode";
             this.lblOpCode.Size = new System.Drawing.Size(60, 17);
             this.lblOpCode.TabIndex = 2;
-            this.lblOpCode.Text = "OpCode:";
+            this.lblOpCode.Text = Resources.FrmAddTarget_OpCode_Text;
             // 
             // cmsInstructions
             // 
@@ -144,7 +146,7 @@
             this.tsmiEditInstruction.Name = "tsmiEditInstruction";
             this.tsmiEditInstruction.ShortcutKeys = System.Windows.Forms.Keys.F2;
             this.tsmiEditInstruction.Size = new System.Drawing.Size(199, 22);
-            this.tsmiEditInstruction.Text = "Edit";
+            this.tsmiEditInstruction.Text = Resources.FrmAddTarget_Edit_Text;
             this.tsmiEditInstruction.Click += new System.EventHandler(this.TsmiEditInstruction_Click);
             // 
             // tsmiRemoveInstruction
@@ -152,7 +154,7 @@
             this.tsmiRemoveInstruction.Name = "tsmiRemoveInstruction";
             this.tsmiRemoveInstruction.ShortcutKeys = System.Windows.Forms.Keys.Delete;
             this.tsmiRemoveInstruction.Size = new System.Drawing.Size(199, 22);
-            this.tsmiRemoveInstruction.Text = "Remove";
+            this.tsmiRemoveInstruction.Text = Resources.FrmAddTarget_Remove_Text;
             this.tsmiRemoveInstruction.Click += new System.EventHandler(this.TsmiRemoveInstruction_Click);
             // 
             // tsmiMoveUpInstruction
@@ -160,7 +162,7 @@
             this.tsmiMoveUpInstruction.Name = "tsmiMoveUpInstruction";
             this.tsmiMoveUpInstruction.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Up)));
             this.tsmiMoveUpInstruction.Size = new System.Drawing.Size(199, 22);
-            this.tsmiMoveUpInstruction.Text = "Move Up";
+            this.tsmiMoveUpInstruction.Text = Resources.FrmAddTarget_Move_Up_Text;
             this.tsmiMoveUpInstruction.Click += new System.EventHandler(this.TsmiMoveUpInstruction_Click);
             // 
             // tsmiMoveDownInstruction
@@ -168,7 +170,7 @@
             this.tsmiMoveDownInstruction.Name = "tsmiMoveDownInstruction";
             this.tsmiMoveDownInstruction.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Down)));
             this.tsmiMoveDownInstruction.Size = new System.Drawing.Size(199, 22);
-            this.tsmiMoveDownInstruction.Text = "Move Down";
+            this.tsmiMoveDownInstruction.Text = Resources.FrmAddTarget_Move_Down_Text;
             this.tsmiMoveDownInstruction.Click += new System.EventHandler(this.TsmiMoveDownInstruction_Click);
             // 
             // lblOperand
@@ -178,7 +180,7 @@
             this.lblOperand.Name = "lblOperand";
             this.lblOperand.Size = new System.Drawing.Size(63, 17);
             this.lblOperand.TabIndex = 4;
-            this.lblOperand.Text = "Operand:";
+            this.lblOperand.Text = Resources.FrmAddTarget_Operand_Text;
             // 
             // txtOperand
             // 
@@ -206,7 +208,7 @@
             this.lblOptional.Name = "lblOptional";
             this.lblOptional.Size = new System.Drawing.Size(61, 17);
             this.lblOptional.TabIndex = 4;
-            this.lblOptional.Text = "Optional:";
+            this.lblOptional.Text = Resources.FrmAddTarget_Optional_Text;
             // 
             // grpAddInstruction
             // 
@@ -223,7 +225,7 @@
             this.grpAddInstruction.Size = new System.Drawing.Size(430, 148);
             this.grpAddInstruction.TabIndex = 2;
             this.grpAddInstruction.TabStop = false;
-            this.grpAddInstruction.Text = "Add Instruction";
+            this.grpAddInstruction.Text = Resources.FrmAddTarget_Add_Instruction_Text;
             // 
             // btnClear
             // 
@@ -231,7 +233,7 @@
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(161, 27);
             this.btnClear.TabIndex = 7;
-            this.btnClear.Text = "Clear";
+            this.btnClear.Text = Resources.FrmAddTarget_Clear_Text;
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.BtnClear_Click);
             // 
@@ -241,7 +243,7 @@
             this.btnAddTarget.Name = "btnAddTarget";
             this.btnAddTarget.Size = new System.Drawing.Size(161, 27);
             this.btnAddTarget.TabIndex = 6;
-            this.btnAddTarget.Text = "Add";
+            this.btnAddTarget.Text = Resources.FrmAddTarget_Add_Text;
             this.btnAddTarget.UseVisualStyleBackColor = true;
             this.btnAddTarget.Click += new System.EventHandler(this.BtnAddTarget_Click);
             // 
@@ -258,7 +260,7 @@
             this.grpTarget.Size = new System.Drawing.Size(430, 119);
             this.grpTarget.TabIndex = 1;
             this.grpTarget.TabStop = false;
-            this.grpTarget.Text = "Target";
+            this.grpTarget.Text = Resources.FrmAddTarget_Target_Text;
             // 
             // cmbOptional
             // 
@@ -283,7 +285,7 @@
             this.grpInstructions.Size = new System.Drawing.Size(430, 199);
             this.grpInstructions.TabIndex = 3;
             this.grpInstructions.TabStop = false;
-            this.grpInstructions.Text = "Instructions";
+            this.grpInstructions.Text = Resources.FrmAddTarget_Instructions_Text;
             // 
             // dgvInstructions
             // 
@@ -312,7 +314,7 @@
             // dgvcIndex
             // 
             this.dgvcIndex.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dgvcIndex.HeaderText = "Index";
+            this.dgvcIndex.HeaderText = Resources.FrmAddTarget_Index_HeaderText;
             this.dgvcIndex.Name = "dgvcIndex";
             this.dgvcIndex.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.dgvcIndex.Width = 45;
@@ -320,14 +322,14 @@
             // dgvcOpCode
             // 
             this.dgvcOpCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dgvcOpCode.HeaderText = "OpCode";
+            this.dgvcOpCode.HeaderText = Resources.FrmAddTarget_OpCode_HeaderText;
             this.dgvcOpCode.Name = "dgvcOpCode";
             this.dgvcOpCode.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.dgvcOpCode.Width = 63;
             // 
             // dgvcOperand
             // 
-            this.dgvcOperand.HeaderText = "Operand";
+            this.dgvcOperand.HeaderText = Resources.FrmAddTarget_Operand_HeaderText;
             this.dgvcOperand.Name = "dgvcOperand";
             this.dgvcOperand.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
@@ -353,7 +355,7 @@
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(212, 27);
             this.btnCancel.TabIndex = 4;
-            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Text = Resources.FrmAddTarget_Cancel_Text;
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
@@ -363,7 +365,7 @@
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(212, 27);
             this.btnSave.TabIndex = 0;
-            this.btnSave.Text = "Save";
+            this.btnSave.Text = Resources.FrmAddTarget_Save_Text;
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
@@ -381,7 +383,7 @@
             this.MaximizeBox = false;
             this.Name = "FrmAddTarget";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Add Target";
+            this.Text = Resources.FrmAddTarget_Add_Target_Text;
             this.Load += new System.EventHandler(this.FrmAddTarget_Load);
             this.cmsInstructions.ResumeLayout(false);
             this.grpAddInstruction.ResumeLayout(false);

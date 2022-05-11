@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Windows.Forms;
+using DotNetUniversalPatcher.Properties;
 
 namespace DotNetUniversalPatcher.UI
 {
@@ -99,7 +100,7 @@ namespace DotNetUniversalPatcher.UI
             this.grpPatcherInfo.Size = new System.Drawing.Size(430, 175);
             this.grpPatcherInfo.TabIndex = 0;
             this.grpPatcherInfo.TabStop = false;
-            this.grpPatcherInfo.Text = "Patcher Info";
+            this.grpPatcherInfo.Text = Resources.FrmMain_Patcher_Info_Text;
             // 
             // lblSoftware
             // 
@@ -108,7 +109,7 @@ namespace DotNetUniversalPatcher.UI
             this.lblSoftware.Name = "lblSoftware";
             this.lblSoftware.Size = new System.Drawing.Size(62, 17);
             this.lblSoftware.TabIndex = 0;
-            this.lblSoftware.Text = "Software:";
+            this.lblSoftware.Text = Resources.FrmMain_Software_Text;
             // 
             // cmbSoftware
             // 
@@ -137,7 +138,7 @@ namespace DotNetUniversalPatcher.UI
             this.lblAuthor.Name = "lblAuthor";
             this.lblAuthor.Size = new System.Drawing.Size(50, 17);
             this.lblAuthor.TabIndex = 4;
-            this.lblAuthor.Text = "Author:";
+            this.lblAuthor.Text = Resources.FrmMain_Author_Text;
             // 
             // lblReleaseDate
             // 
@@ -146,7 +147,7 @@ namespace DotNetUniversalPatcher.UI
             this.lblReleaseDate.Name = "lblReleaseDate";
             this.lblReleaseDate.Size = new System.Drawing.Size(87, 17);
             this.lblReleaseDate.TabIndex = 8;
-            this.lblReleaseDate.Text = "Release Date:";
+            this.lblReleaseDate.Text = Resources.FrmMain_Release_Date_Text;
             // 
             // txtAuthor
             // 
@@ -181,7 +182,7 @@ namespace DotNetUniversalPatcher.UI
             this.lblTargetFiles.Name = "lblTargetFiles";
             this.lblTargetFiles.Size = new System.Drawing.Size(96, 17);
             this.lblTargetFiles.TabIndex = 2;
-            this.lblTargetFiles.Text = "Target Files (0):";
+            this.lblTargetFiles.Text = Resources.FrmMain_Target_Files_Text;
             // 
             // lblWebsite
             // 
@@ -190,7 +191,7 @@ namespace DotNetUniversalPatcher.UI
             this.lblWebsite.Name = "lblWebsite";
             this.lblWebsite.Size = new System.Drawing.Size(57, 17);
             this.lblWebsite.TabIndex = 6;
-            this.lblWebsite.Text = "Website:";
+            this.lblWebsite.Text = Resources.FrmMain_Website_Text;
             // 
             // grpReleaseInfo
             // 
@@ -202,7 +203,7 @@ namespace DotNetUniversalPatcher.UI
             this.grpReleaseInfo.Size = new System.Drawing.Size(430, 125);
             this.grpReleaseInfo.TabIndex = 1;
             this.grpReleaseInfo.TabStop = false;
-            this.grpReleaseInfo.Text = "Release Info";
+            this.grpReleaseInfo.Text = Resources.FrmMain_Release_Info_Text;
             // 
             // lstLog
             // 
@@ -238,7 +239,7 @@ namespace DotNetUniversalPatcher.UI
             this.chkMakeBackup.Name = "chkMakeBackup";
             this.chkMakeBackup.Size = new System.Drawing.Size(104, 21);
             this.chkMakeBackup.TabIndex = 2;
-            this.chkMakeBackup.Text = "Make Backup";
+            this.chkMakeBackup.Text = Resources.FrmMain_Make_Backup_Text;
             this.chkMakeBackup.UseVisualStyleBackColor = true;
             this.chkMakeBackup.CheckedChanged += new System.EventHandler(this.ChkMakeBackup_CheckedChanged);
             // 
@@ -250,7 +251,7 @@ namespace DotNetUniversalPatcher.UI
             this.btnPatch.Name = "btnPatch";
             this.btnPatch.Size = new System.Drawing.Size(102, 34);
             this.btnPatch.TabIndex = 3;
-            this.btnPatch.Text = "Patch";
+            this.btnPatch.Text = Resources.FrmMain_Patch_Text;
             this.btnPatch.UseVisualStyleBackColor = true;
             this.btnPatch.Click += new System.EventHandler(this.BtnPatch_Click);
             // 
@@ -261,7 +262,7 @@ namespace DotNetUniversalPatcher.UI
             this.btnAbout.Name = "btnAbout";
             this.btnAbout.Size = new System.Drawing.Size(102, 34);
             this.btnAbout.TabIndex = 4;
-            this.btnAbout.Text = "About";
+            this.btnAbout.Text = Resources.FrmMain_About_Text;
             this.btnAbout.UseVisualStyleBackColor = true;
             this.btnAbout.Click += new System.EventHandler(this.BtnAbout_Click);
             // 
@@ -273,7 +274,7 @@ namespace DotNetUniversalPatcher.UI
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(102, 34);
             this.btnExit.TabIndex = 5;
-            this.btnExit.Text = "Exit";
+            this.btnExit.Text = Resources.FrmMain_Exit_Text;
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
@@ -294,7 +295,7 @@ namespace DotNetUniversalPatcher.UI
             // 
             this.tsmiScriptEditor.Name = "tsmiScriptEditor";
             this.tsmiScriptEditor.Size = new System.Drawing.Size(83, 20);
-            this.tsmiScriptEditor.Text = "Script Editor";
+            this.tsmiScriptEditor.Text = Resources.FrmMain_Script_Editor_Text;
             this.tsmiScriptEditor.Click += new System.EventHandler(this.TsmiScriptEditor_Click);
             // 
             // tsmiRefresh
@@ -302,21 +303,21 @@ namespace DotNetUniversalPatcher.UI
             this.tsmiRefresh.Name = "tsmiRefresh";
             this.tsmiRefresh.ShortcutKeys = System.Windows.Forms.Keys.F5;
             this.tsmiRefresh.Size = new System.Drawing.Size(58, 20);
-            this.tsmiRefresh.Text = "Refresh";
+            this.tsmiRefresh.Text = Resources.FrmMain_Refresh_Text;
             this.tsmiRefresh.Click += new System.EventHandler(this.TsmiRefresh_Click);
             // 
             // tsmiAbout
             // 
             this.tsmiAbout.Name = "tsmiAbout";
             this.tsmiAbout.Size = new System.Drawing.Size(52, 20);
-            this.tsmiAbout.Text = "About";
+            this.tsmiAbout.Text = Resources.FrmMain_About_Text;
             this.tsmiAbout.Click += new System.EventHandler(this.TsmiAbout_Click);
             // 
             // tsmiExit
             // 
             this.tsmiExit.Name = "tsmiExit";
             this.tsmiExit.Size = new System.Drawing.Size(38, 20);
-            this.tsmiExit.Text = "Exit";
+            this.tsmiExit.Text = Resources.FrmMain_Exit_Text;
             this.tsmiExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
             // FrmMain

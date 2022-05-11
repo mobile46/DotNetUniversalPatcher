@@ -4,6 +4,7 @@ using DotNetUniversalPatcher.Models;
 using DotNetUniversalPatcher.Utilities;
 using System;
 using System.Windows.Forms;
+using DotNetUniversalPatcher.Properties;
 
 namespace DotNetUniversalPatcher.UI
 {
@@ -60,7 +61,7 @@ namespace DotNetUniversalPatcher.UI
             txtPlaceholderKey.Text = string.Empty;
             txtPlaceholderValue.Text = string.Empty;
 
-            btnAddPlaceholder.Text = "Add";
+            btnAddPlaceholder.Text = Resources.FrmPatcherOptions_Add_Text;
             _selectedPlaceholderIndex = -1;
         }
 
@@ -78,28 +79,28 @@ namespace DotNetUniversalPatcher.UI
         {
             if (string.IsNullOrWhiteSpace(txtPlaceholderKey.Text))
             {
-                Helpers.CustomMessageBox("Placeholder Key is empty!");
+                Helpers.CustomMessageBox(Resources.FrmPatcherOptions_BtnAddPlaceholder_Placeholder_Key_is_empty_Msg);
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(txtPlaceholderValue.Text))
             {
-                Helpers.CustomMessageBox("Placeholder Value is empty!");
+                Helpers.CustomMessageBox(Resources.FrmPatcherOptions_BtnAddPlaceholder_Placeholder_Value_is_empty_Msg);
                 return;
             }
 
-            if (btnAddPlaceholder.Text == "Add")
+            if (btnAddPlaceholder.Text == Resources.FrmPatcherOptions_Add_Text)
             {
                 dgvPlaceholders.Rows.Add(txtPlaceholderKey.Text.EmptyIfNull(), txtPlaceholderValue.Text.EmptyIfNull());
             }
-            else if (btnAddPlaceholder.Text == "Update")
+            else if (btnAddPlaceholder.Text == Resources.FrmPatcherOptions_BtnAddPlaceholder_Update_Text)
             {
                 dgvPlaceholders.Rows[_selectedPlaceholderIndex].Cells[0].Value = txtPlaceholderKey.Text.EmptyIfNull();
                 dgvPlaceholders.Rows[_selectedPlaceholderIndex].Cells[1].Value = txtPlaceholderValue.Text.EmptyIfNull();
 
                 _selectedPlaceholderIndex = -1;
 
-                btnAddPlaceholder.Text = "Add";
+                btnAddPlaceholder.Text = Resources.FrmPatcherOptions_Add_Text;
             }
         }
 
@@ -121,7 +122,7 @@ namespace DotNetUniversalPatcher.UI
         {
             if (string.IsNullOrWhiteSpace(txtSoftwareName.Text))
             {
-                Helpers.CustomMessageBox("Software Name is empty!");
+                Helpers.CustomMessageBox(Resources.FrmPatcherOptions_BtnSave_Software_Name_is_empty_Msg);
 
                 if (tabPatcherOptions.SelectedIndex != 0)
                 {
@@ -158,7 +159,7 @@ namespace DotNetUniversalPatcher.UI
                 }
                 else
                 {
-                    Helpers.CustomMessageBox($"\"{key}\" Placeholder already exists!");
+                    Helpers.CustomMessageBox(string.Format(Resources.FrmPatcherOptions_BtnSave_Placeholder_already_exists_Msg, key));
 
                     if (tabPatcherOptions.SelectedIndex != 1)
                     {
@@ -172,7 +173,7 @@ namespace DotNetUniversalPatcher.UI
 
             FrmScriptEditor.Instance.CheckChanges();
 
-            Helpers.CustomMessageBox("Patcher Options are successfully saved!");
+            Helpers.CustomMessageBox(Resources.FrmPatcherOptions_BtnSave_Patcher_Options_are_successfully_saved_Msg);
         }
 
         private void TsmiEditPlaceholder_Click(object sender, EventArgs e)
@@ -184,7 +185,7 @@ namespace DotNetUniversalPatcher.UI
                 txtPlaceholderKey.Text = dgvPlaceholders.Rows[_selectedPlaceholderIndex].Cells[0].Value?.ToString().EmptyIfNull();
                 txtPlaceholderValue.Text = dgvPlaceholders.Rows[_selectedPlaceholderIndex].Cells[1].Value?.ToString().EmptyIfNull();
 
-                btnAddPlaceholder.Text = "Update";
+                btnAddPlaceholder.Text = Resources.FrmPatcherOptions_BtnAddPlaceholder_Update_Text;
             }
         }
 
@@ -194,9 +195,9 @@ namespace DotNetUniversalPatcher.UI
             {
                 dgvPlaceholders.Rows.RemoveAt(dgvPlaceholders.SelectedRows[0].Index);
 
-                if (btnAddPlaceholder.Text == "Update")
+                if (btnAddPlaceholder.Text == Resources.FrmPatcherOptions_BtnAddPlaceholder_Update_Text)
                 {
-                    btnAddPlaceholder.Text = "Add";
+                    btnAddPlaceholder.Text = Resources.FrmPatcherOptions_Add_Text;
                     _selectedPlaceholderIndex = -1;
                 }
             }
@@ -224,9 +225,9 @@ namespace DotNetUniversalPatcher.UI
 
         private void ResetAddPlaceholder()
         {
-            if (btnAddPlaceholder.Text == "Update")
+            if (btnAddPlaceholder.Text == Resources.FrmPatcherOptions_BtnAddPlaceholder_Update_Text)
             {
-                btnAddPlaceholder.Text = "Add";
+                btnAddPlaceholder.Text = Resources.FrmPatcherOptions_Add_Text;
                 _selectedPlaceholderIndex = -1;
             }
         }

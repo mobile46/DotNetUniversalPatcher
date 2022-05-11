@@ -1,40 +1,14 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1746C06C-60F8-4BCB-8CE6-8430D1392B2E}</ProjectGuid>
+    <TargetFramework>net461</TargetFramework>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>DotNetUniversalPatcher</RootNamespace>
-    <AssemblyName>DotNetUniversalPatcher</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
-    <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>x86</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>true</Prefer32Bit>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>x86</PlatformTarget>
     <DebugType>none</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Logo.ico</ApplicationIcon>
@@ -45,96 +19,11 @@
   <PropertyGroup>
     <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
-  <PropertyGroup />
-  <ItemGroup>
-    <Reference Include="dnlib, Version=3.3.0.0, Culture=neutral, PublicKeyToken=50e96378b6e77999, processorArchitecture=MSIL">
-      <HintPath>..\packages\dnlib.3.3.0\lib\net45\dnlib.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Engine\ScriptEngineHelpers.cs" />
-    <Compile Include="Exceptions\ValidatePatchException.cs" />
-    <Compile Include="Exceptions\PatcherException.cs" />
-    <Compile Include="Exceptions\ValidatePatchAndTargetException.cs" />
-    <Compile Include="Extensions\ListExtensions.cs" />
-    <Compile Include="Models\PatcherOptions.cs" />
-    <Compile Include="UI\FrmAbout.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\FrmAbout.Designer.cs">
-      <DependentUpon>FrmAbout.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\FrmAddTarget.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\FrmAddTarget.Designer.cs">
-      <DependentUpon>FrmAddTarget.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\FrmPatcherOptions.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\FrmPatcherOptions.Designer.cs">
-      <DependentUpon>FrmPatcherOptions.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\FrmScriptEditor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\FrmScriptEditor.Designer.cs">
-      <DependentUpon>FrmScriptEditor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Utilities\Constants.cs" />
-    <Compile Include="Models\ActionMethod.cs" />
-    <Compile Include="Extensions\DataGridViewExtensions.cs" />
-    <Compile Include="Utilities\ILogger.cs" />
-    <Compile Include="Utilities\Logger.cs" />
-    <Compile Include="Utilities\LoggerLevel.cs" />
-    <Compile Include="Extensions\StringExtensions.cs" />
-    <Compile Include="Models\ILCode.cs" />
-    <Compile Include="Engine\IScriptEngine.cs" />
-    <Compile Include="Models\Patch.cs" />
-    <Compile Include="Models\PatcherInfo.cs" />
-    <Compile Include="Models\PatcherScript.cs" />
-    <Compile Include="Models\TargetInfo.cs" />
-    <Compile Include="Engine\ScriptEngine.cs" />
-    <Compile Include="Engine\ScriptEngineBase.cs" />
-    <Compile Include="Engine\Patcher.cs" />
-    <Compile Include="Models\Target.cs" />
-    <Compile Include="UI\FrmMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\FrmMain.Designer.cs">
-      <DependentUpon>FrmMain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Utilities\Helpers.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="UI\FrmAbout.resx">
-      <DependentUpon>FrmAbout.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmAddTarget.resx">
-      <DependentUpon>FrmAddTarget.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmMain.resx">
-      <DependentUpon>FrmMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmPatcherOptions.resx">
-      <DependentUpon>FrmPatcherOptions.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmScriptEditor.resx">
-      <DependentUpon>FrmScriptEditor.cs</DependentUpon>
-    </EmbeddedResource>
-    <None Include="app.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
   <ItemGroup>
     <Content Include="Logo.ico" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <PackageReference Include="dnlib" Version="3.5.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
 </Project>

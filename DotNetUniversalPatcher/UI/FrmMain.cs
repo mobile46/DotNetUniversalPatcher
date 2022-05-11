@@ -4,6 +4,7 @@ using DotNetUniversalPatcher.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DotNetUniversalPatcher.Properties;
 
 namespace DotNetUniversalPatcher.UI
 {
@@ -180,12 +181,12 @@ namespace DotNetUniversalPatcher.UI
 
             if (trueOrFalse)
             {
-                grpReleaseInfo.Text = "Log";
+                grpReleaseInfo.Text = Resources.FrmMain_SetLogVisible_Log_Text;
                 lstLog.Visible = true;
             }
             else
             {
-                grpReleaseInfo.Text = "Release Info";
+                grpReleaseInfo.Text = Resources.FrmMain_Release_Info_Text;
                 lstLog.Visible = false;
             }
         }

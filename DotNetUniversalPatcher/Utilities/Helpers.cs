@@ -8,6 +8,7 @@ using System.Security.Principal;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using DotNetUniversalPatcher.Properties;
 
 namespace DotNetUniversalPatcher.Utilities
 {
@@ -22,7 +23,7 @@ namespace DotNetUniversalPatcher.Utilities
                 if (!Directory.Exists(Constants.PatchersDir))
                 {
                     Directory.CreateDirectory(Constants.PatchersDir);
-                    File.WriteAllText(Path.Combine(Constants.PatchersDir, "Move Your DNUP Script Files Here!"), "Delete me.");
+                    File.WriteAllText(Path.Combine(Constants.PatchersDir, Resources.Helpers_CreatePatcherDirIfNotExists_FileName), Resources.Helpers_CreatePatcherDirIfNotExists_FileContent);
 
                     result = true;
                 }
