@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using DotNetUniversalPatcher.Properties;
 
 namespace DotNetUniversalPatcher.Engine
 {
@@ -57,7 +58,9 @@ namespace DotNetUniversalPatcher.Engine
                     }
                     catch (Exception ex)
                     {
-                        Logger.Error($"Error while loading the script file -> ({Path.GetFileName(file)})\r\n{(Program.IsDebugModeEnabled ? "\r\n" : string.Empty)}{ex.Message}{(Program.IsDebugModeEnabled ? $"\r\n{ex.StackTrace}" : string.Empty)}");
+                        Logger.Error(string.Format(Resources.ScriptEngine_LoadAndParseScripts_Exception_Msg,
+                            Path.GetFileName(file), Program.IsDebugModeEnabled ? "\r\n" : string.Empty, ex.Message,
+                            Program.IsDebugModeEnabled ? string.Format("\r\n{0}", ex.StackTrace) : string.Empty));
                         IsLoadingError = true;
                         FrmMain.Instance.grpReleaseInfo.Enabled = true;
                     }
@@ -65,7 +68,9 @@ namespace DotNetUniversalPatcher.Engine
             }
             catch (DirectoryNotFoundException ex)
             {
-                Logger.Error($"Patchers folder not found. \r\n{(Program.IsDebugModeEnabled ? "\r\n" : string.Empty)}{ex.Message}{(Program.IsDebugModeEnabled ? $"\r\n{ex.StackTrace}" : string.Empty)}");
+                Logger.Error(string.Format(Resources.ScriptEngine_LoadAndParseScripts__DirectoryNotFoundException_Msg,
+                    Program.IsDebugModeEnabled ? "\r\n" : string.Empty, ex.Message,
+                    Program.IsDebugModeEnabled ? string.Format("\r\n{0}", ex.StackTrace) : string.Empty));
                 IsLoadingError = true;
                 FrmMain.Instance.grpReleaseInfo.Enabled = true;
             }
@@ -122,12 +127,12 @@ namespace DotNetUniversalPatcher.Engine
 
                         if (!File.Exists(filePath))
                         {
-                            Logger.Error($"File not found -> {filePath}");
+                            Logger.Error(string.Format(Resources.ScriptEngine_Process_File_not_found_Msg, filePath));
 
                             using (var ofd = new OpenFileDialog())
                             {
                                 ofd.FileName = Path.GetFileName(filePath);
-                                ofd.Filter = "Executable files (.exe;*.dll)|*.exe;*.dll|All files (*.*)|*.*";
+                                ofd.Filter = Resources.ScriptEngine_Process_Filter_ExtName;
                                 ofd.CheckFileExists = true;
 
                                 string directoryName = Path.GetDirectoryName(filePath);
@@ -147,7 +152,7 @@ namespace DotNetUniversalPatcher.Engine
                                 }
                                 else
                                 {
-                                    Logger.Log("[Skipping file]");
+                                    Logger.Log(Resources.ScriptEngine_Process__Skipping_file_Msg);
                                     Logger.Log();
                                     continue;
                                 }
@@ -158,7 +163,8 @@ namespace DotNetUniversalPatcher.Engine
 
                         using (var p = new Patcher(filePath, keepOldMaxStack))
                         {
-                            Logger.Log($"[File Path] -> {filePath} {(keepOldMaxStack ? "-> KeepOldMaxStack: True" : string.Empty)}");
+                            Logger.Log(string.Format(Resources.ScriptEngine_Process__File_Path_Msg, filePath,
+                                keepOldMaxStack ? "-> KeepOldMaxStack: True" : string.Empty));
 
                             foreach (var target in patch.TargetList)
                             {
@@ -170,7 +176,7 @@ namespace DotNetUniversalPatcher.Engine
 
                         patchedFileCount++;
 
-                        Logger.Log($"[File Patched] -> {filePath}");
+                        Logger.Log(string.Format(Resources.ScriptEngine_Process__File_Patched_Msg, filePath));
                         Logger.Log();
                     }
 
@@ -179,11 +185,14 @@ namespace DotNetUniversalPatcher.Engine
             }
             catch (Exception ex)
             {
-                Logger.Error($"{ex.Message}{(Program.IsDebugModeEnabled ? $"\r\n{ex.StackTrace}" : string.Empty)}");
+                Logger.Error(string.Format("{0}{1}", ex.Message,
+                    Program.IsDebugModeEnabled ? string.Format("\r\n{0}", ex.StackTrace) : string.Empty));
                 Logger.Log();
             }
 
-            Logger.Info(patchedFileCount > 0 ? $"Patching process finished! [{patchedFileCount} file(s) patched]" : "Nothing patched!");
+            Logger.Info(patchedFileCount > 0 ? string.Format(Resources.ScriptEngine_Process_Patching_process_finished_Msg,
+                    patchedFileCount)
+                : Resources.ScriptEngine_Process_Nothing_patched_Msg);
         }
 
         internal void ProcessInternal(Patcher p, Target target)
@@ -203,7 +212,7 @@ namespace DotNetUniversalPatcher.Engine
 
         private void RefreshTargetFilesText()
         {
-            FrmMain.Instance.lblTargetFiles.Text = $"Target Files ({CurrentScript.TargetFilesCount}):";
+            FrmMain.Instance.lblTargetFiles.Text = string.Format(Resources.FrmMain_Target_Files_Text, CurrentScript.TargetFilesCount);
         }
     }
 }

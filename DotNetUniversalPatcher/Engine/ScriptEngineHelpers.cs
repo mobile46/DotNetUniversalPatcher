@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using DotNetUniversalPatcher.Properties;
 
 namespace DotNetUniversalPatcher.Engine
 {
@@ -22,7 +23,7 @@ namespace DotNetUniversalPatcher.Engine
         {
             if (string.IsNullOrWhiteSpace(script.PatcherOptions?.PatcherInfo?.Software))
             {
-                throw new Exception("Software Name is empty!");
+                throw new Exception(Resources.ScriptEngineHelpers_ValidateScript_Software_Name_is_empty_Msg);
             }
 
             for (var i = 0; i < script.PatchList.Count; i++)
