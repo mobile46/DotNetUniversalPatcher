@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
+using DotNetUniversalPatcher.Properties;
 
 namespace DotNetUniversalPatcher.UI
 {
@@ -54,9 +55,9 @@ namespace DotNetUniversalPatcher.UI
                 dgvInstructions.Rows.Clear();
             }
 
-            btnAddTarget.Text = "Add";
+            btnAddTarget.Text = Resources.FrmAddTarget_TsmiRemoveInstruction_AddTarget_Text;
 
-            if (Text == "Edit Target")
+            if (Text == Resources.FrmAddTarget_Edit_Target_Text)
             {
                 var selectedPatchIndex = FrmScriptEditor.Instance.cmbPatchList.SelectedIndex;
 
@@ -140,7 +141,7 @@ namespace DotNetUniversalPatcher.UI
                     }
             }
 
-            if (btnAddTarget.Text == "Add")
+            if (btnAddTarget.Text == Resources.FrmAddTarget_TsmiRemoveInstruction_AddTarget_Text)
             {
                 string[] cells = new string[3];
 
@@ -165,7 +166,7 @@ namespace DotNetUniversalPatcher.UI
 
                 dgvInstructions.Rows.Add(cells);
             }
-            else if (btnAddTarget.Text == "Update")
+            else if (btnAddTarget.Text == Resources.FrmAddTarget_TsmiEditInstruction_Update_Text)
             {
                 dgvInstructions.Rows[_selectedInstructionIndex].Cells[0].Value = txtIndex.Text.EmptyIfNull();
                 dgvInstructions.Rows[_selectedInstructionIndex].Cells[1].Value = cmbOpCodes.Text.EmptyIfNull();
@@ -186,7 +187,7 @@ namespace DotNetUniversalPatcher.UI
                     }
                 }
 
-                btnAddTarget.Text = "Add";
+                btnAddTarget.Text = Resources.FrmAddTarget_TsmiRemoveInstruction_AddTarget_Text;
             }
         }
 
@@ -230,7 +231,7 @@ namespace DotNetUniversalPatcher.UI
                 ilCodes.Add(new ILCode { OpCode = dgvInstructionsRow.Cells[1].Value?.ToString().EmptyIfNull(), Operand = dgvInstructionsRow.Cells[2].Value?.ToString().EmptyIfNull() });
             }
 
-            if (btnSave.Text == "Save")
+            if (btnSave.Text == Resources.FrmAddTarget_Save_Text)
             {
                 FrmScriptEditor.Instance.PatchList[selectedPatchIndex].TargetList.Add(new Target
                 {
@@ -245,9 +246,9 @@ namespace DotNetUniversalPatcher.UI
 
                 SelectedTargetId = FrmScriptEditor.Instance.PatchList[selectedPatchIndex].TargetList.Count - 1;
 
-                btnSave.Text = "Update";
+                btnSave.Text = Resources.FrmAddTarget_BtnSave_Update_Text;
             }
-            else if (btnSave.Text == "Update")
+            else if (btnSave.Text == Resources.FrmAddTarget_BtnSave_Update_Text)
             {
                 var selectedTarget = FrmScriptEditor.Instance.PatchList[selectedPatchIndex].TargetList[SelectedTargetId];
 
@@ -326,7 +327,7 @@ namespace DotNetUniversalPatcher.UI
                 cmbOpCodes.Text = dgvInstructions.Rows[_selectedInstructionIndex].Cells[1].Value?.ToString().EmptyIfNull();
                 txtOperand.Text = dgvInstructions.Rows[_selectedInstructionIndex].Cells[2].Value?.ToString().EmptyIfNull();
 
-                btnAddTarget.Text = "Update";
+                btnAddTarget.Text = Resources.FrmAddTarget_TsmiEditInstruction_Update_Text;
             }
         }
 
@@ -336,9 +337,9 @@ namespace DotNetUniversalPatcher.UI
             {
                 dgvInstructions.Rows.RemoveAt(dgvInstructions.SelectedRows[0].Index);
 
-                if (btnAddTarget.Text == "Update")
+                if (btnAddTarget.Text == Resources.FrmAddTarget_TsmiEditInstruction_Update_Text)
                 {
-                    btnAddTarget.Text = "Add";
+                    btnAddTarget.Text = Resources.FrmAddTarget_TsmiRemoveInstruction_AddTarget_Text;
                     _selectedInstructionIndex = -1;
                 }
             }
@@ -391,9 +392,9 @@ namespace DotNetUniversalPatcher.UI
 
         private void ResetAddTarget()
         {
-            if (btnAddTarget.Text == "Update")
+            if (btnAddTarget.Text == Resources.FrmAddTarget_TsmiEditInstruction_Update_Text)
             {
-                btnAddTarget.Text = "Add";
+                btnAddTarget.Text = Resources.FrmAddTarget_TsmiRemoveInstruction_AddTarget_Text;
                 _selectedInstructionIndex = -1;
             }
         }

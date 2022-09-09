@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using DotNetUniversalPatcher.Properties;
 
 namespace DotNetUniversalPatcher.Engine
 {
@@ -241,8 +242,8 @@ namespace DotNetUniversalPatcher.Engine
 
         internal void Save(bool backup)
         {
-            string tempFile = $"{_file}.tmp";
-            string backupFile = $"{_file}.bak";
+            string tempFile = string.Format("{0}.tmp", _file);
+            string backupFile = string.Format("{0}.bak", _file);
 
             if (Module.IsILOnly)
             {
@@ -286,7 +287,7 @@ namespace DotNetUniversalPatcher.Engine
                 }
                 else
                 {
-                    Logger.Info($"Backup file already exists -> {backupFile}");
+                    Logger.Info(string.Format(Resources.Patcher_Save_Backup_file_already_exists_Msg, backupFile));
                 }
             }
 
@@ -483,7 +484,10 @@ namespace DotNetUniversalPatcher.Engine
         {
             foreach (var exception in Method.Body.ExceptionHandlers)
             {
-                _exceptionHandlersIndices.Add($"{Instructions.IndexOf(exception.TryStart)}|{Instructions.IndexOf(exception.TryEnd)}|{Instructions.IndexOf(exception.HandlerStart)}|{Instructions.IndexOf(exception.HandlerEnd)}|{Instructions.IndexOf(exception.FilterStart)}");
+                _exceptionHandlersIndices.Add(string.Format("{0}|{1}|{2}|{3}|{4}",
+                    Instructions.IndexOf(exception.TryStart), Instructions.IndexOf(exception.TryEnd),
+                    Instructions.IndexOf(exception.HandlerStart), Instructions.IndexOf(exception.HandlerEnd),
+                    Instructions.IndexOf(exception.FilterStart)));
             }
         }
 
@@ -563,7 +567,7 @@ namespace DotNetUniversalPatcher.Engine
                 return instruction;
             }
 
-            throw new Exception($"Instruction not found at offset {offset}");
+            throw new Exception(string.Format(Resources.Patcher_GetInstruction_Instruction_not_found_Msg, offset));
         }
 
         internal Instruction GetInstruction(int index)

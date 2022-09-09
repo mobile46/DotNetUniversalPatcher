@@ -1,4 +1,6 @@
-﻿namespace DotNetUniversalPatcher.UI
+﻿using DotNetUniversalPatcher.Properties;
+
+namespace DotNetUniversalPatcher.UI
 {
     partial class FrmPatcherOptions
     {
@@ -122,7 +124,7 @@
             this.tpPatcherOptions.Padding = new System.Windows.Forms.Padding(3);
             this.tpPatcherOptions.Size = new System.Drawing.Size(483, 413);
             this.tpPatcherOptions.TabIndex = 0;
-            this.tpPatcherOptions.Text = "Patcher Options";
+            this.tpPatcherOptions.Text = Resources.FrmPatcherOptions_Patcher_Options_Text;
             this.tpPatcherOptions.UseVisualStyleBackColor = true;
             // 
             // grpOptions
@@ -133,7 +135,7 @@
             this.grpOptions.Size = new System.Drawing.Size(465, 52);
             this.grpOptions.TabIndex = 1;
             this.grpOptions.TabStop = false;
-            this.grpOptions.Text = "Options";
+            this.grpOptions.Text = Resources.FrmPatcherOptions_Options_Text;
             // 
             // chkMakeBackup
             // 
@@ -142,7 +144,7 @@
             this.chkMakeBackup.Name = "chkMakeBackup";
             this.chkMakeBackup.Size = new System.Drawing.Size(104, 21);
             this.chkMakeBackup.TabIndex = 0;
-            this.chkMakeBackup.Text = "Make Backup";
+            this.chkMakeBackup.Text = Resources.FrmPatcherOptions_Make_Backup_Text;
             this.chkMakeBackup.UseVisualStyleBackColor = true;
             // 
             // grpPatcherInfo
@@ -166,7 +168,7 @@
             this.grpPatcherInfo.Size = new System.Drawing.Size(465, 339);
             this.grpPatcherInfo.TabIndex = 0;
             this.grpPatcherInfo.TabStop = false;
-            this.grpPatcherInfo.Text = "Patcher Info";
+            this.grpPatcherInfo.Text = Resources.FrmPatcherOptions_Patcher_Info_Text;
             // 
             // lblAboutText
             // 
@@ -175,7 +177,7 @@
             this.lblAboutText.Name = "lblAboutText";
             this.lblAboutText.Size = new System.Drawing.Size(73, 17);
             this.lblAboutText.TabIndex = 12;
-            this.lblAboutText.Text = "About Text:";
+            this.lblAboutText.Text = Resources.FrmPatcherOptions_About_Text_Text;
             // 
             // lblReleaseInfo
             // 
@@ -184,7 +186,7 @@
             this.lblReleaseInfo.Name = "lblReleaseInfo";
             this.lblReleaseInfo.Size = new System.Drawing.Size(82, 17);
             this.lblReleaseInfo.TabIndex = 10;
-            this.lblReleaseInfo.Text = "Release Info:";
+            this.lblReleaseInfo.Text = Resources.FrmPatcherOptions_Release_Info_Text;
             // 
             // txtReleaseInfo
             // 
@@ -236,7 +238,7 @@
             this.btnVisit.Name = "btnVisit";
             this.btnVisit.Size = new System.Drawing.Size(60, 27);
             this.btnVisit.TabIndex = 6;
-            this.btnVisit.Text = "Visit";
+            this.btnVisit.Text = Resources.FrmPatcherOptions_Visit_Text;
             this.btnVisit.UseVisualStyleBackColor = true;
             this.btnVisit.Click += new System.EventHandler(this.BtnVisit_Click);
             // 
@@ -246,7 +248,7 @@
             this.btnToday.Name = "btnToday";
             this.btnToday.Size = new System.Drawing.Size(60, 27);
             this.btnToday.TabIndex = 9;
-            this.btnToday.Text = "Today";
+            this.btnToday.Text = Resources.FrmPatcherOptions_Today_Text;
             this.btnToday.UseVisualStyleBackColor = true;
             this.btnToday.Click += new System.EventHandler(this.BtnToday_Click);
             // 
@@ -257,7 +259,7 @@
             this.lblAuthor.Name = "lblAuthor";
             this.lblAuthor.Size = new System.Drawing.Size(50, 17);
             this.lblAuthor.TabIndex = 2;
-            this.lblAuthor.Text = "Author:";
+            this.lblAuthor.Text = Resources.FrmPatcherOptions_Author_Text;
             // 
             // lblReleaseDate
             // 
@@ -266,7 +268,7 @@
             this.lblReleaseDate.Name = "lblReleaseDate";
             this.lblReleaseDate.Size = new System.Drawing.Size(87, 17);
             this.lblReleaseDate.TabIndex = 7;
-            this.lblReleaseDate.Text = "Release Date:";
+            this.lblReleaseDate.Text = Resources.FrmPatcherOptions_Release_Date_Text;
             // 
             // lblWebsite
             // 
@@ -275,7 +277,7 @@
             this.lblWebsite.Name = "lblWebsite";
             this.lblWebsite.Size = new System.Drawing.Size(57, 17);
             this.lblWebsite.TabIndex = 4;
-            this.lblWebsite.Text = "Website:";
+            this.lblWebsite.Text = Resources.FrmPatcherOptions_Website_Text;
             // 
             // lblSoftware
             // 
@@ -284,7 +286,7 @@
             this.lblSoftware.Name = "lblSoftware";
             this.lblSoftware.Size = new System.Drawing.Size(62, 17);
             this.lblSoftware.TabIndex = 0;
-            this.lblSoftware.Text = "Software:";
+            this.lblSoftware.Text = Resources.FrmPatcherOptions_Software_Text;
             // 
             // tpPlaceholders
             // 
@@ -295,7 +297,7 @@
             this.tpPlaceholders.Padding = new System.Windows.Forms.Padding(3);
             this.tpPlaceholders.Size = new System.Drawing.Size(483, 413);
             this.tpPlaceholders.TabIndex = 1;
-            this.tpPlaceholders.Text = "Placeholders";
+            this.tpPlaceholders.Text = Resources.FrmPatcherOptions_Placeholders_Text;
             this.tpPlaceholders.UseVisualStyleBackColor = true;
             // 
             // grpAddPlaceholder
@@ -311,7 +313,7 @@
             this.grpAddPlaceholder.Size = new System.Drawing.Size(465, 188);
             this.grpAddPlaceholder.TabIndex = 0;
             this.grpAddPlaceholder.TabStop = false;
-            this.grpAddPlaceholder.Text = "Add Placeholder";
+            this.grpAddPlaceholder.Text = Resources.FrmPatcherOptions_Add_Placeholder_Text;
             // 
             // btnClear
             // 
@@ -319,7 +321,7 @@
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(165, 27);
             this.btnClear.TabIndex = 5;
-            this.btnClear.Text = "Clear";
+            this.btnClear.Text = Resources.FrmPatcherOptions_Clear_Text;
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.BtnClear_Click);
             // 
@@ -329,7 +331,7 @@
             this.lblPlaceholderValue.Name = "lblPlaceholderValue";
             this.lblPlaceholderValue.Size = new System.Drawing.Size(114, 17);
             this.lblPlaceholderValue.TabIndex = 2;
-            this.lblPlaceholderValue.Text = "Placeholder Value:";
+            this.lblPlaceholderValue.Text = Resources.FrmPatcherOptions_Placeholder_Value_Text;
             // 
             // lblPlaceholderKey
             // 
@@ -338,7 +340,7 @@
             this.lblPlaceholderKey.Name = "lblPlaceholderKey";
             this.lblPlaceholderKey.Size = new System.Drawing.Size(104, 17);
             this.lblPlaceholderKey.TabIndex = 0;
-            this.lblPlaceholderKey.Text = "Placeholder Key:";
+            this.lblPlaceholderKey.Text = Resources.FrmPatcherOptions_Placeholder_Key_Text;
             // 
             // txtPlaceholderValue
             // 
@@ -361,7 +363,7 @@
             this.btnAddPlaceholder.Name = "btnAddPlaceholder";
             this.btnAddPlaceholder.Size = new System.Drawing.Size(165, 27);
             this.btnAddPlaceholder.TabIndex = 4;
-            this.btnAddPlaceholder.Text = "Add";
+            this.btnAddPlaceholder.Text = Resources.FrmPatcherOptions_Add_Text;
             this.btnAddPlaceholder.UseVisualStyleBackColor = true;
             this.btnAddPlaceholder.Click += new System.EventHandler(this.BtnAddPlaceholder_Click);
             // 
@@ -373,7 +375,7 @@
             this.grpPlaceholders.Size = new System.Drawing.Size(465, 203);
             this.grpPlaceholders.TabIndex = 1;
             this.grpPlaceholders.TabStop = false;
-            this.grpPlaceholders.Text = "Placeholders";
+            this.grpPlaceholders.Text = Resources.FrmPatcherOptions_Placeholders_Text;
             // 
             // dgvPlaceholders
             // 
@@ -400,13 +402,13 @@
             // 
             // dgvcPlaceholderKey
             // 
-            this.dgvcPlaceholderKey.HeaderText = "Placeholder Key";
+            this.dgvcPlaceholderKey.HeaderText = Resources.FrmPatcherOptions_Placeholder_Key_HeaderText;
             this.dgvcPlaceholderKey.Name = "dgvcPlaceholderKey";
             this.dgvcPlaceholderKey.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // dgvcPlaceholderValue
             // 
-            this.dgvcPlaceholderValue.HeaderText = "Placeholder Value";
+            this.dgvcPlaceholderValue.HeaderText = Resources.FrmPatcherOptions_Placeholder_Value_HeaderText;
             this.dgvcPlaceholderValue.Name = "dgvcPlaceholderValue";
             this.dgvcPlaceholderValue.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
@@ -425,7 +427,7 @@
             this.tsmiEditPlaceholder.Name = "tsmiEditPlaceholder";
             this.tsmiEditPlaceholder.ShortcutKeys = System.Windows.Forms.Keys.F2;
             this.tsmiEditPlaceholder.Size = new System.Drawing.Size(199, 22);
-            this.tsmiEditPlaceholder.Text = "Edit";
+            this.tsmiEditPlaceholder.Text = Resources.FrmPatcherOptions_Edit_Text;
             this.tsmiEditPlaceholder.Click += new System.EventHandler(this.TsmiEditPlaceholder_Click);
             // 
             // tsmiRemovePlaceholder
@@ -433,7 +435,7 @@
             this.tsmiRemovePlaceholder.Name = "tsmiRemovePlaceholder";
             this.tsmiRemovePlaceholder.ShortcutKeys = System.Windows.Forms.Keys.Delete;
             this.tsmiRemovePlaceholder.Size = new System.Drawing.Size(199, 22);
-            this.tsmiRemovePlaceholder.Text = "Remove";
+            this.tsmiRemovePlaceholder.Text = Resources.FrmPatcherOptions_Remove_Text;
             this.tsmiRemovePlaceholder.Click += new System.EventHandler(this.TsmiRemovePlaceholder_Click);
             // 
             // tsmiMoveUpPlaceholder
@@ -441,7 +443,7 @@
             this.tsmiMoveUpPlaceholder.Name = "tsmiMoveUpPlaceholder";
             this.tsmiMoveUpPlaceholder.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Up)));
             this.tsmiMoveUpPlaceholder.Size = new System.Drawing.Size(199, 22);
-            this.tsmiMoveUpPlaceholder.Text = "Move Up";
+            this.tsmiMoveUpPlaceholder.Text = Resources.FrmPatcherOptions_Move_Up_Text;
             this.tsmiMoveUpPlaceholder.Click += new System.EventHandler(this.TsmiMoveUpPlaceholder_Click);
             // 
             // tsmiMoveDownPlaceholder
@@ -449,7 +451,7 @@
             this.tsmiMoveDownPlaceholder.Name = "tsmiMoveDownPlaceholder";
             this.tsmiMoveDownPlaceholder.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Down)));
             this.tsmiMoveDownPlaceholder.Size = new System.Drawing.Size(199, 22);
-            this.tsmiMoveDownPlaceholder.Text = "Move Down";
+            this.tsmiMoveDownPlaceholder.Text = Resources.FrmPatcherOptions_Move_Down_Text;
             this.tsmiMoveDownPlaceholder.Click += new System.EventHandler(this.TsmiMoveDownPlaceholder_Click);
             // 
             // tpReservedPlaceholders
@@ -460,7 +462,7 @@
             this.tpReservedPlaceholders.Padding = new System.Windows.Forms.Padding(3);
             this.tpReservedPlaceholders.Size = new System.Drawing.Size(483, 413);
             this.tpReservedPlaceholders.TabIndex = 2;
-            this.tpReservedPlaceholders.Text = "Reserved Placeholders";
+            this.tpReservedPlaceholders.Text = Resources.FrmPatcherOptions_Reserved_Placeholders_Text;
             this.tpReservedPlaceholders.UseVisualStyleBackColor = true;
             // 
             // grpReservedPlaceholers
@@ -471,7 +473,7 @@
             this.grpReservedPlaceholers.Size = new System.Drawing.Size(465, 397);
             this.grpReservedPlaceholers.TabIndex = 2;
             this.grpReservedPlaceholers.TabStop = false;
-            this.grpReservedPlaceholers.Text = "Reserved Placeholders";
+            this.grpReservedPlaceholers.Text = Resources.FrmPatcherOptions_Reserved_Placeholders_Text;
             // 
             // dgvReservedPlaceholders
             // 
@@ -498,12 +500,12 @@
             // 
             // dataGridViewTextBoxColumn1
             // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Placeholder Key";
+            this.dataGridViewTextBoxColumn1.HeaderText = Resources.FrmPatcherOptions_Placeholder_Key_HeaderText;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
             // dataGridViewTextBoxColumn2
             // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Placeholder Value";
+            this.dataGridViewTextBoxColumn2.HeaderText = Resources.FrmPatcherOptions_Placeholder_Value_HeaderText;
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             // 
             // btnCancel
@@ -513,7 +515,7 @@
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(242, 27);
             this.btnCancel.TabIndex = 0;
-            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Text = Resources.FrmPatcherOptions_Cancel_Text;
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
@@ -523,7 +525,7 @@
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(242, 27);
             this.btnSave.TabIndex = 1;
-            this.btnSave.Text = "Save";
+            this.btnSave.Text = Resources.FrmPatcherOptions_Save_Text;
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
@@ -542,7 +544,7 @@
             this.MaximizeBox = false;
             this.Name = "FrmPatcherOptions";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Patcher Options";
+            this.Text = Resources.FrmPatcherOptions_Patcher_Options_Text;
             this.Load += new System.EventHandler(this.FrmPatcherOptions_Load);
             this.flpMain.ResumeLayout(false);
             this.tabPatcherOptions.ResumeLayout(false);

@@ -1,4 +1,6 @@
-﻿namespace DotNetUniversalPatcher.UI
+﻿using DotNetUniversalPatcher.Properties;
+
+namespace DotNetUniversalPatcher.UI
 {
     partial class FrmScriptEditor
     {
@@ -114,14 +116,14 @@
             this.tsmiFile.Name = "tsmiFile";
             this.tsmiFile.ShortcutKeyDisplayString = "";
             this.tsmiFile.Size = new System.Drawing.Size(37, 19);
-            this.tsmiFile.Text = "File";
+            this.tsmiFile.Text = Resources.FrmScriptEditor_File_Text;
             // 
             // tsmiNewScript
             // 
             this.tsmiNewScript.Name = "tsmiNewScript";
             this.tsmiNewScript.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.tsmiNewScript.Size = new System.Drawing.Size(186, 22);
-            this.tsmiNewScript.Text = "New";
+            this.tsmiNewScript.Text = Resources.FrmScriptEditor_New_Text;
             this.tsmiNewScript.Click += new System.EventHandler(this.TsmiNewScript_Click);
             // 
             // tsmiOpenScript
@@ -129,7 +131,7 @@
             this.tsmiOpenScript.Name = "tsmiOpenScript";
             this.tsmiOpenScript.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.tsmiOpenScript.Size = new System.Drawing.Size(186, 22);
-            this.tsmiOpenScript.Text = "Open";
+            this.tsmiOpenScript.Text = Resources.FrmScriptEditor_Open_Text;
             this.tsmiOpenScript.Click += new System.EventHandler(this.TsmiOpenScript_Click);
             // 
             // tsmiSaveScript
@@ -138,7 +140,7 @@
             this.tsmiSaveScript.Name = "tsmiSaveScript";
             this.tsmiSaveScript.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.tsmiSaveScript.Size = new System.Drawing.Size(186, 22);
-            this.tsmiSaveScript.Text = "Save";
+            this.tsmiSaveScript.Text = Resources.FrmScriptEditor_Save_Text;
             this.tsmiSaveScript.Click += new System.EventHandler(this.TsmiSaveScript_Click);
             // 
             // tsmiSaveAsScript
@@ -148,7 +150,7 @@
             this.tsmiSaveAsScript.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
             | System.Windows.Forms.Keys.S)));
             this.tsmiSaveAsScript.Size = new System.Drawing.Size(186, 22);
-            this.tsmiSaveAsScript.Text = "Save As...";
+            this.tsmiSaveAsScript.Text = Resources.FrmScriptEditor_Save_As_Text;
             this.tsmiSaveAsScript.Click += new System.EventHandler(this.TsmiSaveAsScript_Click);
             // 
             // tsmiCloseScript
@@ -157,21 +159,21 @@
             this.tsmiCloseScript.Name = "tsmiCloseScript";
             this.tsmiCloseScript.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.W)));
             this.tsmiCloseScript.Size = new System.Drawing.Size(186, 22);
-            this.tsmiCloseScript.Text = "Close";
+            this.tsmiCloseScript.Text = Resources.FrmScriptEditor_Close_Text;
             this.tsmiCloseScript.Click += new System.EventHandler(this.TsmiCloseScript_Click);
             // 
             // tsmiAbout
             // 
             this.tsmiAbout.Name = "tsmiAbout";
             this.tsmiAbout.Size = new System.Drawing.Size(52, 19);
-            this.tsmiAbout.Text = "About";
+            this.tsmiAbout.Text = Resources.FrmScriptEditor_About_Text;
             this.tsmiAbout.Click += new System.EventHandler(this.TsmiAbout_Click);
             // 
             // tsmiCloseForm
             // 
             this.tsmiCloseForm.Name = "tsmiCloseForm";
             this.tsmiCloseForm.Size = new System.Drawing.Size(48, 19);
-            this.tsmiCloseForm.Text = "Close";
+            this.tsmiCloseForm.Text = Resources.FrmScriptEditor_Close_Text;
             this.tsmiCloseForm.Click += new System.EventHandler(this.TsmiCloseForm_Click);
             // 
             // btnAddPatch
@@ -180,7 +182,7 @@
             this.btnAddPatch.Name = "btnAddPatch";
             this.btnAddPatch.Size = new System.Drawing.Size(71, 27);
             this.btnAddPatch.TabIndex = 1;
-            this.btnAddPatch.Text = "Add";
+            this.btnAddPatch.Text = Resources.FrmScriptEditor_AddPatch_Text;
             this.btnAddPatch.UseVisualStyleBackColor = true;
             this.btnAddPatch.Click += new System.EventHandler(this.BtnAddPatch_Click);
             // 
@@ -200,7 +202,7 @@
             this.tsmiAddTarget.Name = "tsmiAddTarget";
             this.tsmiAddTarget.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.A)));
             this.tsmiAddTarget.Size = new System.Drawing.Size(199, 22);
-            this.tsmiAddTarget.Text = "Add";
+            this.tsmiAddTarget.Text = Resources.FrmScriptEditor_AddPatch_Text;
             this.tsmiAddTarget.Click += new System.EventHandler(this.TsmiAddTarget_Click);
             // 
             // tsmiEditTarget
@@ -208,7 +210,7 @@
             this.tsmiEditTarget.Name = "tsmiEditTarget";
             this.tsmiEditTarget.ShortcutKeys = System.Windows.Forms.Keys.F2;
             this.tsmiEditTarget.Size = new System.Drawing.Size(199, 22);
-            this.tsmiEditTarget.Text = "Edit";
+            this.tsmiEditTarget.Text = Resources.FrmScriptEditor_EditTarget_Text;
             this.tsmiEditTarget.Click += new System.EventHandler(this.TsmiEditTarget_Click);
             // 
             // tsmiRemoveTarget
@@ -216,7 +218,7 @@
             this.tsmiRemoveTarget.Name = "tsmiRemoveTarget";
             this.tsmiRemoveTarget.ShortcutKeys = System.Windows.Forms.Keys.Delete;
             this.tsmiRemoveTarget.Size = new System.Drawing.Size(199, 22);
-            this.tsmiRemoveTarget.Text = "Remove";
+            this.tsmiRemoveTarget.Text = Resources.FrmScriptEditor_RemoveTarget_Text;
             this.tsmiRemoveTarget.Click += new System.EventHandler(this.TsmiRemoveTarget_Click);
             // 
             // tsmiMoveUpTarget
@@ -224,7 +226,7 @@
             this.tsmiMoveUpTarget.Name = "tsmiMoveUpTarget";
             this.tsmiMoveUpTarget.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Up)));
             this.tsmiMoveUpTarget.Size = new System.Drawing.Size(199, 22);
-            this.tsmiMoveUpTarget.Text = "Move Up";
+            this.tsmiMoveUpTarget.Text = Resources.FrmScriptEditor_MoveUpTarget_Text;
             this.tsmiMoveUpTarget.Click += new System.EventHandler(this.TsmiMoveUpTarget_Click);
             // 
             // tsmiMoveDownTarget
@@ -232,7 +234,7 @@
             this.tsmiMoveDownTarget.Name = "tsmiMoveDownTarget";
             this.tsmiMoveDownTarget.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Down)));
             this.tsmiMoveDownTarget.Size = new System.Drawing.Size(199, 22);
-            this.tsmiMoveDownTarget.Text = "Move Down";
+            this.tsmiMoveDownTarget.Text = Resources.FrmScriptEditor_MoveDownTarget_Text;
             this.tsmiMoveDownTarget.Click += new System.EventHandler(this.TsmiMoveDownTarget_Click);
             // 
             // btnRemovePatch
@@ -241,7 +243,7 @@
             this.btnRemovePatch.Name = "btnRemovePatch";
             this.btnRemovePatch.Size = new System.Drawing.Size(71, 27);
             this.btnRemovePatch.TabIndex = 2;
-            this.btnRemovePatch.Text = "Remove";
+            this.btnRemovePatch.Text = Resources.FrmScriptEditor_RemoveTarget_Text;
             this.btnRemovePatch.UseVisualStyleBackColor = true;
             this.btnRemovePatch.Click += new System.EventHandler(this.BtnRemovePatch_Click);
             // 
@@ -269,7 +271,7 @@
             this.grpPatchList.Size = new System.Drawing.Size(430, 63);
             this.grpPatchList.TabIndex = 0;
             this.grpPatchList.TabStop = false;
-            this.grpPatchList.Text = "Patch List";
+            this.grpPatchList.Text = Resources.FrmScriptEditor_Patch_List_Text;
             // 
             // btnPatcherOptions
             // 
@@ -277,7 +279,7 @@
             this.btnPatcherOptions.Name = "btnPatcherOptions";
             this.btnPatcherOptions.Size = new System.Drawing.Size(112, 27);
             this.btnPatcherOptions.TabIndex = 3;
-            this.btnPatcherOptions.Text = "Patcher Options";
+            this.btnPatcherOptions.Text = Resources.FrmScriptEditor_Patcher_Options_Text;
             this.btnPatcherOptions.UseVisualStyleBackColor = true;
             this.btnPatcherOptions.Click += new System.EventHandler(this.BtnPatcherOptions_Click);
             // 
@@ -290,7 +292,7 @@
             this.grpTargetOptions.Size = new System.Drawing.Size(430, 389);
             this.grpTargetOptions.TabIndex = 1;
             this.grpTargetOptions.TabStop = false;
-            this.grpTargetOptions.Text = "Target Options";
+            this.grpTargetOptions.Text = Resources.FrmScriptEditor_Target_Options_Text;
             // 
             // tabTargetOptions
             // 
@@ -310,7 +312,7 @@
             this.tpTargetList.Padding = new System.Windows.Forms.Padding(3);
             this.tpTargetList.Size = new System.Drawing.Size(409, 335);
             this.tpTargetList.TabIndex = 0;
-            this.tpTargetList.Text = "Target List";
+            this.tpTargetList.Text = Resources.FrmScriptEditor_Target_List_Text;
             this.tpTargetList.UseVisualStyleBackColor = true;
             // 
             // grpTargetList
@@ -321,7 +323,7 @@
             this.grpTargetList.Size = new System.Drawing.Size(395, 323);
             this.grpTargetList.TabIndex = 0;
             this.grpTargetList.TabStop = false;
-            this.grpTargetList.Text = "Target List";
+            this.grpTargetList.Text = Resources.FrmScriptEditor_Target_List_Text;
             // 
             // dgvTargetList
             // 
@@ -349,13 +351,13 @@
             // dgvcActionMethod
             // 
             this.dgvcActionMethod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dgvcActionMethod.HeaderText = "Action Method";
+            this.dgvcActionMethod.HeaderText = Resources.FrmScriptEditor_Action_Method_HeaderText;
             this.dgvcActionMethod.Name = "dgvcActionMethod";
             this.dgvcActionMethod.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // dgvcFullName
             // 
-            this.dgvcFullName.HeaderText = "Full Name";
+            this.dgvcFullName.HeaderText = Resources.FrmScriptEditor_Full_Name_HeaderText;
             this.dgvcFullName.Name = "dgvcFullName";
             this.dgvcFullName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
@@ -369,7 +371,7 @@
             this.tpTargetInfo.Padding = new System.Windows.Forms.Padding(3);
             this.tpTargetInfo.Size = new System.Drawing.Size(409, 335);
             this.tpTargetInfo.TabIndex = 1;
-            this.tpTargetInfo.Text = "Target Info";
+            this.tpTargetInfo.Text = Resources.FrmScriptEditor_Target_Info_Text;
             this.tpTargetInfo.UseVisualStyleBackColor = true;
             // 
             // grpAddTarget
@@ -382,7 +384,7 @@
             this.grpAddTarget.Size = new System.Drawing.Size(395, 64);
             this.grpAddTarget.TabIndex = 0;
             this.grpAddTarget.TabStop = false;
-            this.grpAddTarget.Text = "Add Target File";
+            this.grpAddTarget.Text = Resources.FrmScriptEditor_Add_Target_File_Text;
             // 
             // btnSelectTargetFile
             // 
@@ -410,7 +412,7 @@
             this.btnAddTargetFile.Name = "btnAddTargetFile";
             this.btnAddTargetFile.Size = new System.Drawing.Size(71, 27);
             this.btnAddTargetFile.TabIndex = 2;
-            this.btnAddTargetFile.Text = "Add";
+            this.btnAddTargetFile.Text = Resources.FrmScriptEditor_AddTargetFile_Text;
             this.btnAddTargetFile.UseVisualStyleBackColor = true;
             this.btnAddTargetFile.Click += new System.EventHandler(this.BtnAddTargetFile_Click);
             // 
@@ -422,7 +424,7 @@
             this.grpOptions.Size = new System.Drawing.Size(395, 52);
             this.grpOptions.TabIndex = 2;
             this.grpOptions.TabStop = false;
-            this.grpOptions.Text = "Options";
+            this.grpOptions.Text = Resources.FrmScriptEditor_Options_Text;
             // 
             // chkKeepOldMaxStack
             // 
@@ -431,7 +433,7 @@
             this.chkKeepOldMaxStack.Name = "chkKeepOldMaxStack";
             this.chkKeepOldMaxStack.Size = new System.Drawing.Size(176, 21);
             this.chkKeepOldMaxStack.TabIndex = 0;
-            this.chkKeepOldMaxStack.Text = "Keep Old MaxStack Value";
+            this.chkKeepOldMaxStack.Text = Resources.FrmScriptEditor_Keep_Old_MaxStack_Value_Text;
             this.chkKeepOldMaxStack.UseVisualStyleBackColor = true;
             this.chkKeepOldMaxStack.CheckedChanged += new System.EventHandler(this.ChkKeepOldMaxStack_CheckedChanged);
             // 
@@ -443,7 +445,7 @@
             this.grpTargetFiles.Size = new System.Drawing.Size(395, 195);
             this.grpTargetFiles.TabIndex = 1;
             this.grpTargetFiles.TabStop = false;
-            this.grpTargetFiles.Text = "Target Files";
+            this.grpTargetFiles.Text = Resources.FrmScriptEditor_Target_Files_Text;
             // 
             // dgvTargetFiles
             // 
@@ -470,7 +472,7 @@
             // 
             // dgvcPlaceholderKey
             // 
-            this.dgvcPlaceholderKey.HeaderText = "File Path";
+            this.dgvcPlaceholderKey.HeaderText = Resources.FrmScriptEditor_File_Path_Text;
             this.dgvcPlaceholderKey.Name = "dgvcPlaceholderKey";
             this.dgvcPlaceholderKey.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
@@ -489,7 +491,7 @@
             this.tsmiEditTargetFile.Name = "tsmiEditTargetFile";
             this.tsmiEditTargetFile.ShortcutKeys = System.Windows.Forms.Keys.F2;
             this.tsmiEditTargetFile.Size = new System.Drawing.Size(199, 22);
-            this.tsmiEditTargetFile.Text = "Edit";
+            this.tsmiEditTargetFile.Text = Resources.FrmScriptEditor_EditTargetFile_Text;
             this.tsmiEditTargetFile.Click += new System.EventHandler(this.TsmiEditTargetFile_Click);
             // 
             // tsmiRemoveTargetFile
@@ -497,7 +499,7 @@
             this.tsmiRemoveTargetFile.Name = "tsmiRemoveTargetFile";
             this.tsmiRemoveTargetFile.ShortcutKeys = System.Windows.Forms.Keys.Delete;
             this.tsmiRemoveTargetFile.Size = new System.Drawing.Size(199, 22);
-            this.tsmiRemoveTargetFile.Text = "Remove";
+            this.tsmiRemoveTargetFile.Text = Resources.FrmScriptEditor_RemoveTargetFile_Text;
             this.tsmiRemoveTargetFile.Click += new System.EventHandler(this.TsmiRemoveTargetFile_Click);
             // 
             // tsmiMoveUpTargetFile
@@ -505,7 +507,7 @@
             this.tsmiMoveUpTargetFile.Name = "tsmiMoveUpTargetFile";
             this.tsmiMoveUpTargetFile.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Up)));
             this.tsmiMoveUpTargetFile.Size = new System.Drawing.Size(199, 22);
-            this.tsmiMoveUpTargetFile.Text = "Move Up";
+            this.tsmiMoveUpTargetFile.Text = Resources.FrmScriptEditor_MoveUpTarget_Text;
             this.tsmiMoveUpTargetFile.Click += new System.EventHandler(this.TsmiMoveUpTargetFile_Click);
             // 
             // tsmiMoveDownTargetFile
@@ -513,7 +515,7 @@
             this.tsmiMoveDownTargetFile.Name = "tsmiMoveDownTargetFile";
             this.tsmiMoveDownTargetFile.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Down)));
             this.tsmiMoveDownTargetFile.Size = new System.Drawing.Size(199, 22);
-            this.tsmiMoveDownTargetFile.Text = "Move Down";
+            this.tsmiMoveDownTargetFile.Text = Resources.FrmScriptEditor_MoveDownTarget_Text;
             this.tsmiMoveDownTargetFile.Click += new System.EventHandler(this.TsmiMoveDownTargetFile_Click);
             // 
             // flpMain
@@ -543,7 +545,7 @@
             this.MaximizeBox = false;
             this.Name = "FrmScriptEditor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Script Editor";
+            this.Text = Resources.FrmScriptEditor_Script_Editor_Text;
             this.Load += new System.EventHandler(this.FrmScriptEditor_Load);
             this.msMain.ResumeLayout(false);
             this.msMain.PerformLayout();

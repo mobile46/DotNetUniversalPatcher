@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
+using DotNetUniversalPatcher.Properties;
 
 namespace DotNetUniversalPatcher.UI
 {
@@ -33,12 +34,12 @@ namespace DotNetUniversalPatcher.UI
 
         private void FrmScriptEditor_Load(object sender, EventArgs e)
         {
-            btnAddTargetFile.Text = "Add";
+            btnAddTargetFile.Text = Resources.FrmScriptEditor_AddTargetFile_Text;
         }
 
         private void BtnAddPatch_Click(object sender, EventArgs e)
         {
-            PatchList.Add(new Patch($"Patch {_patchCount++}"));
+            PatchList.Add(new Patch(string.Format(Resources.FrmScriptEditor_TsmiOpenScript_PatchName_Text, _patchCount++)));
 
             RefreshPatchList();
 
@@ -47,7 +48,8 @@ namespace DotNetUniversalPatcher.UI
 
         private void BtnRemovePatch_Click(object sender, EventArgs e)
         {
-            if (cmbPatchList.SelectedIndex > -1 && MessageBox.Show($"Are you sure you want to remove \"{cmbPatchList.Text}\"?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (cmbPatchList.SelectedIndex > -1 && MessageBox.Show(
+                    string.Format(Resources.FrmScriptEditor_BtnRemovePatch_Msg, cmbPatchList.Text), "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 PatchList.RemoveAt(cmbPatchList.SelectedIndex);
 
@@ -73,7 +75,7 @@ namespace DotNetUniversalPatcher.UI
             {
                 using (var ofd = new OpenFileDialog())
                 {
-                    ofd.Filter = "Executable files (.exe;*.dll)|*.exe;*.dll|All files (*.*)|*.*";
+                    ofd.Filter = Resources.ScriptEngine_Process_Filter_ExtName;
                     ofd.CheckFileExists = true;
                     ofd.RestoreDirectory = true;
 
@@ -93,21 +95,21 @@ namespace DotNetUniversalPatcher.UI
         {
             if (string.IsNullOrWhiteSpace(txtFilePath.Text))
             {
-                Helpers.CustomMessageBox("Target File Path is empty!");
+                Helpers.CustomMessageBox(Resources.FrmScriptEditor_BtnAddTargetFile_Target_File_Path_is_empty_Msg);
                 return;
             }
 
-            if (btnAddTargetFile.Text == "Add")
+            if (btnAddTargetFile.Text == Resources.FrmScriptEditor_AddTargetFile_Text)
             {
                 dgvTargetFiles.Rows.Add(txtFilePath.Text);
             }
-            else if (btnAddTargetFile.Text == "Update")
+            else if (btnAddTargetFile.Text == Resources.FrmScriptEditor_TsmiEditTargetFile_Update_Text)
             {
                 dgvTargetFiles.Rows[_selectedTargetFileIndex].Cells[0].Value = txtFilePath.Text;
 
                 _selectedTargetFileIndex = -1;
 
-                btnAddTargetFile.Text = "Add";
+                btnAddTargetFile.Text = Resources.FrmScriptEditor_AddTargetFile_Text;
             }
 
             AddTargetFilesToSelectedPatch();
@@ -130,7 +132,7 @@ namespace DotNetUniversalPatcher.UI
         {
             if (_checkChanges)
             {
-                DialogResult question = MessageBox.Show("Do you want to save changes before closing the script file?", "Question", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                DialogResult question = MessageBox.Show(Resources.FrmScriptEditor_TsmiCloseScript_Message, "Question", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
 
                 if (question == DialogResult.Cancel)
                 {
@@ -167,7 +169,7 @@ namespace DotNetUniversalPatcher.UI
                 tabTargetOptions.SelectedTab = tpTargetList;
             }
 
-            Text = "Script Editor - (New Script)";
+            Text = string.Format("{0} - (New Script)", Resources.FrmScriptEditor_Script_Editor_Text);
 
             PatchList.Clear();
 
@@ -179,7 +181,7 @@ namespace DotNetUniversalPatcher.UI
 
             txtFilePath.Text = string.Empty;
 
-            btnAddTargetFile.Text = "Add";
+            btnAddTargetFile.Text = Resources.FrmScriptEditor_AddTargetFile_Text;
 
             dgvTargetFiles.Rows.Clear();
         }
@@ -190,7 +192,8 @@ namespace DotNetUniversalPatcher.UI
             {
                 using (var ofd = new OpenFileDialog())
                 {
-                    ofd.Filter = $"DNUP files (.{Constants.ScriptFileExtension})|*.{Constants.ScriptFileExtension}|All files (*.*)|*.*";
+                    ofd.Filter = string.Format("DNUP files (.{0})|*.{1}|All files (*.*)|*.*",
+                        Constants.ScriptFileExtension, Constants.ScriptFileExtension);
                     ofd.CheckFileExists = true;
                     ofd.RestoreDirectory = true;
 
@@ -211,14 +214,14 @@ namespace DotNetUniversalPatcher.UI
 
                         foreach (var patch in Script.PatchList)
                         {
-                            patch.Name = $"Patch {_patchCount++}";
+                            patch.Name = string.Format(Resources.FrmScriptEditor_TsmiOpenScript_PatchName_Text, _patchCount++);
 
                             PatchList.Add(patch);
                         }
 
                         RefreshPatchList();
 
-                        Text = $"Script Editor - ({ofd.FileName})";
+                        Text = string.Format("{0} - ({1})", Resources.FrmScriptEditor_Script_Editor_Text, ofd.FileName);
 
                         _scriptFileName = ofd.FileName;
 
@@ -263,7 +266,7 @@ namespace DotNetUniversalPatcher.UI
 
                     File.WriteAllText(_scriptFileName, script);
 
-                    Text = $"Script Editor - ({_scriptFileName})";
+                    Text = string.Format("{0} - ({1})", Resources.FrmScriptEditor_Script_Editor_Text, _scriptFileName);
 
                     _checkChanges = false;
                 }
@@ -286,7 +289,7 @@ namespace DotNetUniversalPatcher.UI
         {
             if (_checkChanges)
             {
-                DialogResult question = MessageBox.Show("Do you want to save changes before closing the script file?", "Question", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                DialogResult question = MessageBox.Show(Resources.FrmScriptEditor_TsmiCloseScript_Message, "Question", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
 
                 if (question == DialogResult.Cancel)
                 {
@@ -308,7 +311,7 @@ namespace DotNetUniversalPatcher.UI
             tsmiSaveAsScript.Enabled = false;
             tsmiCloseScript.Enabled = false;
 
-            Text = "Script Editor";
+            Text = Resources.FrmScriptEditor_Script_Editor_Text;
 
             Script = null;
 
@@ -333,15 +336,15 @@ namespace DotNetUniversalPatcher.UI
 
             txtFilePath.Text = string.Empty;
 
-            btnAddTargetFile.Text = "Add";
+            btnAddTargetFile.Text = Resources.FrmScriptEditor_AddTargetFile_Text;
 
             dgvTargetFiles.Rows.Clear();
         }
 
         private void TsmiAddTarget_Click(object sender, EventArgs e)
         {
-            FrmAddTarget.Instance.Text = "Add Target";
-            FrmAddTarget.Instance.btnSave.Text = "Save";
+            FrmAddTarget.Instance.Text = Resources.FrmAddTarget_Add_Target_Text;
+            FrmAddTarget.Instance.btnSave.Text = Resources.FrmAddTarget_Save_Text;
             FrmAddTarget.Instance.SelectedTargetId = -1;
             FrmAddTarget.Instance.ShowDialog();
         }
@@ -350,8 +353,8 @@ namespace DotNetUniversalPatcher.UI
         {
             if (dgvTargetList.SelectedRows.Count > 0)
             {
-                FrmAddTarget.Instance.Text = "Edit Target";
-                FrmAddTarget.Instance.btnSave.Text = "Update";
+                FrmAddTarget.Instance.Text = Resources.FrmScriptEditor_TsmiEditTarget_Text;
+                FrmAddTarget.Instance.btnSave.Text = Resources.FrmScriptEditor_btnSave_Update_Text;
                 FrmAddTarget.Instance.SelectedTargetId = dgvTargetList.SelectedRows[0].Index;
                 FrmAddTarget.Instance.ShowDialog();
             }
@@ -378,7 +381,7 @@ namespace DotNetUniversalPatcher.UI
 
                 txtFilePath.Text = dgvTargetFiles.SelectedRows[0].Cells[0].Value?.ToString().EmptyIfNull();
 
-                btnAddTargetFile.Text = "Update";
+                btnAddTargetFile.Text = Resources.FrmScriptEditor_TsmiEditTargetFile_Update_Text;
             }
         }
 
@@ -416,7 +419,7 @@ namespace DotNetUniversalPatcher.UI
                     {
                         foreach (var target in targetList)
                         {
-                            dgvTargetList.Rows.Add($"[{target.Action}]", target.FullName);
+                            dgvTargetList.Rows.Add(string.Format("[{0}]", target.Action), target.FullName);
                         }
                     }
                 }
@@ -531,8 +534,10 @@ namespace DotNetUniversalPatcher.UI
 
                 using (var sfd = new SaveFileDialog())
                 {
-                    sfd.Filter = $"DNUP files (.{Constants.ScriptFileExtension})|*.{Constants.ScriptFileExtension}|All files (*.*)|*.*";
-                    sfd.FileName = $"{Script.PatcherOptions.PatcherInfo.Software}.{Constants.ScriptFileExtension}";
+                    sfd.Filter = string.Format("DNUP files (.{0})|*.{1}|All files (*.*)|*.*",
+                        Constants.ScriptFileExtension, Constants.ScriptFileExtension);
+                    sfd.FileName = string.Format("{0}.{1}", Script.PatcherOptions.PatcherInfo.Software,
+                        Constants.ScriptFileExtension);
                     sfd.InitialDirectory = Constants.PatchersDir;
                     sfd.OverwritePrompt = true;
 
@@ -552,7 +557,7 @@ namespace DotNetUniversalPatcher.UI
                         {
                             _scriptFileName = sfd.FileName;
 
-                            Text = $"Script Editor - ({_scriptFileName})";
+                            Text = string.Format("{0} - ({1})", Resources.FrmScriptEditor_Script_Editor_Text, _scriptFileName);
                         }
 
                         tsmiNewScript.Enabled = true;
@@ -591,7 +596,8 @@ namespace DotNetUniversalPatcher.UI
                     {
                         if (placeholder.Key == string.Empty)
                         {
-                            throw new Exception($"Placeholder Key is empty!\r\nPlaceholder Value -> \"{placeholder.Value}\"");
+                            throw new Exception(string.Format(
+                                Resources.FrmScriptEditor_CheckScript_Placeholder_Key_is_empty_Msg, placeholder.Value));
                         }
                     }
                 }
@@ -601,14 +607,14 @@ namespace DotNetUniversalPatcher.UI
             {
                 if (Script.PatchList.Count == 0)
                 {
-                    throw new Exception("Patch List is Empty!");
+                    throw new Exception(Resources.FrmScriptEditor_CheckScript_Patch_List_is_Empty_Msg);
                 }
 
                 foreach (var patch in Script.PatchList)
                 {
                     if (patch.TargetList.Count == 0)
                     {
-                        throw new Exception("Target List is Empty!");
+                        throw new Exception(Resources.FrmScriptEditor_CheckScript_Target_List_is_Empty_Msg);
                     }
 
                     foreach (var target in patch.TargetList)
@@ -649,7 +655,8 @@ namespace DotNetUniversalPatcher.UI
                         {
                             if (target.ILCodes != null && target.ILCodes.Count == 0)
                             {
-                                throw new Exception($"Instructions are Empty!\r\nTarget -> {target.FullName}");
+                                throw new Exception(string.Format(Resources.FrmScriptEditor_CheckScript_Instructions_are_Empty_Msg,
+                                    target.FullName));
                             }
                         }
 
@@ -665,7 +672,7 @@ namespace DotNetUniversalPatcher.UI
                                 {
                                     if (target.Action == ActionMethod.Insert || target.Action == ActionMethod.Replace || target.Action == ActionMethod.Remove)
                                     {
-                                        throw new Exception($"Indices are empty! -> {target.FullName}");
+                                        throw new Exception(string.Format(Resources.FrmScriptEditor_CheckScript_Indices_are_empty_Msg, target.FullName));
                                     }
                                 }
                             }
@@ -690,9 +697,9 @@ namespace DotNetUniversalPatcher.UI
 
         private void ResetAddTargetFile()
         {
-            if (btnAddTargetFile.Text == "Update")
+            if (btnAddTargetFile.Text == Resources.FrmScriptEditor_TsmiEditTargetFile_Update_Text)
             {
-                btnAddTargetFile.Text = "Add";
+                btnAddTargetFile.Text = Resources.FrmScriptEditor_AddTargetFile_Text;
                 _selectedTargetFileIndex = -1;
             }
         }

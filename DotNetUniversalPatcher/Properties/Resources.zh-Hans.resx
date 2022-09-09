@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="FrmAddTarget_Action_Text" xml:space="preserve">
+    <value>动作：</value>
+  </data>
+  <data name="FrmAddTarget_Add_Instruction_Text" xml:space="preserve">
+    <value>添加指令</value>
+  </data>
+  <data name="FrmAddTarget_Add_Target_Text" xml:space="preserve">
+    <value>添加目标</value>
+  </data>
+  <data name="FrmAddTarget_Add_Text" xml:space="preserve">
+    <value>添加</value>
+  </data>
+  <data name="FrmAddTarget_Cancel_Text" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="FrmAddTarget_Clear_Text" xml:space="preserve">
+    <value>清除</value>
+  </data>
+  <data name="FrmAddTarget_Edit_Text" xml:space="preserve">
+    <value>编辑</value>
+  </data>
+  <data name="FrmAddTarget_Full_Name_Text" xml:space="preserve">
+    <value>全名：</value>
+  </data>
+  <data name="FrmAddTarget_Index_HeaderText" xml:space="preserve">
+    <value>Index</value>
+  </data>
+  <data name="FrmAddTarget_Index_Text" xml:space="preserve">
+    <value>Index：</value>
+  </data>
+  <data name="FrmAddTarget_Instructions_Text" xml:space="preserve">
+    <value>命令</value>
+  </data>
+  <data name="FrmAddTarget_Move_Down_Text" xml:space="preserve">
+    <value>下移</value>
+  </data>
+  <data name="FrmAddTarget_Move_Up_Text" xml:space="preserve">
+    <value>上移</value>
+  </data>
+  <data name="FrmAddTarget_OpCode_HeaderText" xml:space="preserve">
+    <value>操作码</value>
+  </data>
+  <data name="FrmAddTarget_OpCode_Text" xml:space="preserve">
+    <value>操作码：</value>
+  </data>
+  <data name="FrmAddTarget_Operand_HeaderText" xml:space="preserve">
+    <value>操作数</value>
+  </data>
+  <data name="FrmAddTarget_Operand_Text" xml:space="preserve">
+    <value>操作数：</value>
+  </data>
+  <data name="FrmAddTarget_Optional_Text" xml:space="preserve">
+    <value>可选：</value>
+  </data>
+  <data name="FrmAddTarget_Remove_Text" xml:space="preserve">
+    <value>移除</value>
+  </data>
+  <data name="FrmAddTarget_Save_Text" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="FrmAddTarget_Target_Text" xml:space="preserve">
+    <value>目标</value>
+  </data>
+  <data name="FrmMain_About_Text" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="FrmMain_Author_Text" xml:space="preserve">
+    <value>作者：</value>
+  </data>
+  <data name="FrmMain_Exit_Text" xml:space="preserve">
+    <value>退出</value>
+  </data>
+  <data name="FrmMain_Make_Backup_Text" xml:space="preserve">
+    <value>备份</value>
+  </data>
+  <data name="FrmMain_Patch_Text" xml:space="preserve">
+    <value>补丁</value>
+  </data>
+  <data name="FrmMain_Patcher_Info_Text" xml:space="preserve">
+    <value>补丁信息</value>
+  </data>
+  <data name="FrmMain_Refresh_Text" xml:space="preserve">
+    <value>刷新</value>
+  </data>
+  <data name="FrmMain_Release_Date_Text" xml:space="preserve">
+    <value>发布日期：</value>
+  </data>
+  <data name="FrmMain_Release_Info_Text" xml:space="preserve">
+    <value>发布信息</value>
+  </data>
+  <data name="FrmMain_Script_Editor_Text" xml:space="preserve">
+    <value>脚本编辑器</value>
+  </data>
+  <data name="FrmMain_SetLogVisible_Log_Text" xml:space="preserve">
+    <value>日志</value>
+  </data>
+  <data name="FrmMain_Software_Text" xml:space="preserve">
+    <value>软件：</value>
+  </data>
+  <data name="FrmMain_Target_Files_Text" xml:space="preserve">
+    <value>目标文件({0})：</value>
+  </data>
+  <data name="FrmMain_Website_Text" xml:space="preserve">
+    <value>网站：</value>
+  </data>
+  <data name="FrmPatcherOptions_About_Text_Text" xml:space="preserve">
+    <value>关于文本：</value>
+  </data>
+  <data name="FrmPatcherOptions_Add_Placeholder_Text" xml:space="preserve">
+    <value>添加占位符</value>
+  </data>
+  <data name="FrmPatcherOptions_Add_Text" xml:space="preserve">
+    <value>添加</value>
+  </data>
+  <data name="FrmPatcherOptions_Author_Text" xml:space="preserve">
+    <value>作者：</value>
+  </data>
+  <data name="FrmPatcherOptions_Cancel_Text" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="FrmPatcherOptions_Clear_Text" xml:space="preserve">
+    <value>清除</value>
+  </data>
+  <data name="FrmPatcherOptions_Edit_Text" xml:space="preserve">
+    <value>编辑</value>
+  </data>
+  <data name="FrmPatcherOptions_Make_Backup_Text" xml:space="preserve">
+    <value>备份</value>
+  </data>
+  <data name="FrmPatcherOptions_Move_Down_Text" xml:space="preserve">
+    <value>下移</value>
+  </data>
+  <data name="FrmPatcherOptions_Move_Up_Text" xml:space="preserve">
+    <value>上移</value>
+  </data>
+  <data name="FrmPatcherOptions_Options_Text" xml:space="preserve">
+    <value>选项</value>
+  </data>
+  <data name="FrmPatcherOptions_Patcher_Info_Text" xml:space="preserve">
+    <value>补丁信息</value>
+  </data>
+  <data name="FrmPatcherOptions_Patcher_Options_Text" xml:space="preserve">
+    <value>补丁选项</value>
+  </data>
+  <data name="FrmPatcherOptions_Placeholder_Key_HeaderText" xml:space="preserve">
+    <value>占位符键</value>
+  </data>
+  <data name="FrmPatcherOptions_Placeholder_Key_Text" xml:space="preserve">
+    <value>占位符键：</value>
+  </data>
+  <data name="FrmPatcherOptions_Placeholder_Value_HeaderText" xml:space="preserve">
+    <value>占位符值</value>
+  </data>
+  <data name="FrmPatcherOptions_Placeholder_Value_Text" xml:space="preserve">
+    <value>占位符值：</value>
+  </data>
+  <data name="FrmPatcherOptions_Placeholders_Text" xml:space="preserve">
+    <value>占位符</value>
+  </data>
+  <data name="FrmPatcherOptions_Release_Date_Text" xml:space="preserve">
+    <value>发布日期：</value>
+  </data>
+  <data name="FrmPatcherOptions_Release_Info_Text" xml:space="preserve">
+    <value>发布信息：</value>
+  </data>
+  <data name="FrmPatcherOptions_Remove_Text" xml:space="preserve">
+    <value>移除</value>
+  </data>
+  <data name="FrmPatcherOptions_Reserved_Placeholders_Text" xml:space="preserve">
+    <value>保留占位符</value>
+  </data>
+  <data name="FrmPatcherOptions_Save_Text" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="FrmPatcherOptions_Software_Text" xml:space="preserve">
+    <value>软件：</value>
+  </data>
+  <data name="FrmPatcherOptions_Today_Text" xml:space="preserve">
+    <value>今天</value>
+  </data>
+  <data name="FrmPatcherOptions_Visit_Text" xml:space="preserve">
+    <value>访问</value>
+  </data>
+  <data name="FrmPatcherOptions_Website_Text" xml:space="preserve">
+    <value>网站：</value>
+  </data>
+  <data name="FrmScriptEditor_About_Text" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="FrmScriptEditor_Action_Method_HeaderText" xml:space="preserve">
+    <value>动作方法</value>
+  </data>
+  <data name="FrmScriptEditor_Add_Target_File_Text" xml:space="preserve">
+    <value>添加目标文件</value>
+  </data>
+  <data name="FrmScriptEditor_AddPatch_Text" xml:space="preserve">
+    <value>添加</value>
+  </data>
+  <data name="FrmScriptEditor_AddTargetFile_Text" xml:space="preserve">
+    <value>添加</value>
+  </data>
+  <data name="FrmScriptEditor_Close_Text" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="FrmScriptEditor_EditTarget_Text" xml:space="preserve">
+    <value>编辑</value>
+  </data>
+  <data name="FrmScriptEditor_EditTargetFile_Text" xml:space="preserve">
+    <value>编辑</value>
+  </data>
+  <data name="FrmScriptEditor_File_Path_Text" xml:space="preserve">
+    <value>文件路径</value>
+  </data>
+  <data name="FrmScriptEditor_File_Text" xml:space="preserve">
+    <value>文件</value>
+  </data>
+  <data name="FrmScriptEditor_Full_Name_HeaderText" xml:space="preserve">
+    <value>全名</value>
+  </data>
+  <data name="FrmScriptEditor_Keep_Old_MaxStack_Value_Text" xml:space="preserve">
+    <value>保留旧的MaxStack值</value>
+  </data>
+  <data name="FrmScriptEditor_MoveDownTarget_Text" xml:space="preserve">
+    <value>下移</value>
+  </data>
+  <data name="FrmScriptEditor_MoveUpTarget_Text" xml:space="preserve">
+    <value>上移</value>
+  </data>
+  <data name="FrmScriptEditor_New_Text" xml:space="preserve">
+    <value>新建</value>
+  </data>
+  <data name="FrmScriptEditor_Open_Text" xml:space="preserve">
+    <value>打开</value>
+  </data>
+  <data name="FrmScriptEditor_Options_Text" xml:space="preserve">
+    <value>选项</value>
+  </data>
+  <data name="FrmScriptEditor_Patch_List_Text" xml:space="preserve">
+    <value>补丁程序列表</value>
+  </data>
+  <data name="FrmScriptEditor_Patcher_Options_Text" xml:space="preserve">
+    <value>补丁程序选项</value>
+  </data>
+  <data name="FrmScriptEditor_RemoveTarget_Text" xml:space="preserve">
+    <value>移除</value>
+  </data>
+  <data name="FrmScriptEditor_RemoveTargetFile_Text" xml:space="preserve">
+    <value>移除</value>
+  </data>
+  <data name="FrmScriptEditor_Save_As_Text" xml:space="preserve">
+    <value>另存为...</value>
+  </data>
+  <data name="FrmScriptEditor_Save_Text" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="FrmScriptEditor_Script_Editor_Text" xml:space="preserve">
+    <value>脚本编辑器</value>
+  </data>
+  <data name="FrmScriptEditor_Target_Files_Text" xml:space="preserve">
+    <value>目标文件</value>
+  </data>
+  <data name="FrmScriptEditor_Target_Info_Text" xml:space="preserve">
+    <value>目标信息</value>
+  </data>
+  <data name="FrmScriptEditor_Target_List_Text" xml:space="preserve">
+    <value>目标清单</value>
+  </data>
+  <data name="FrmScriptEditor_Target_Options_Text" xml:space="preserve">
+    <value>目标选项</value>
+  </data>
+  <data name="FrmAddTarget_TsmiEditInstruction_Update_Text" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="FrmPatcherOptions_BtnAddPlaceholder_Update_Text" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="FrmScriptEditor_btnSave_Update_Text" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="FrmScriptEditor_TsmiEditTargetFile_Update_Text" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="FrmScriptEditor_TsmiEditTarget_Text" xml:space="preserve">
+    <value>编辑目标</value>
+  </data>
+  <data name="FrmAddTarget_TsmiRemoveInstruction_AddTarget_Text" xml:space="preserve">
+    <value>添加</value>
+  </data>
+  <data name="FrmAddTarget_BtnSave_Update_Text" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="FrmAddTarget_Edit_Target_Text" xml:space="preserve">
+    <value>编辑目标</value>
+  </data>
+  <data name="Patcher_Save_Backup_file_already_exists_Msg" xml:space="preserve">
+    <value>备份文件已存在 -&gt; {0}</value>
+  </data>
+  <data name="ScriptEngine_LoadAndParseScripts__DirectoryNotFoundException_Msg" xml:space="preserve">
+    <value>找不到补丁程序文件夹。
+{0}{1}{2}</value>
+  </data>
+  <data name="ScriptEngine_LoadAndParseScripts_Exception_Msg" xml:space="preserve">
+    <value>加载脚本文件 -&gt; ({0}) 时出错
+{1}{2}{3}</value>
+  </data>
+  <data name="ScriptEngine_Process__File_Patched_Msg" xml:space="preserve">
+    <value>[文件已修补] -&gt; {0}</value>
+  </data>
+  <data name="ScriptEngine_Process__File_Path_Msg" xml:space="preserve">
+    <value>[文件路径] -&gt; {0}{1}</value>
+  </data>
+  <data name="ScriptEngine_Process__Skipping_file_Msg" xml:space="preserve">
+    <value>[正在跳过文件]</value>
+  </data>
+  <data name="ScriptEngine_Process_File_not_found_Msg" xml:space="preserve">
+    <value>找不到文件 -&gt; {0}</value>
+  </data>
+  <data name="ScriptEngine_Process_Filter_ExtName" xml:space="preserve">
+    <value>可执行文件 (.exe;*.dll)|*.exe;*.dll|所有文件 (*.*)|*.*</value>
+  </data>
+  <data name="ScriptEngine_Process_Nothing_patched_Msg" xml:space="preserve">
+    <value>没有修补！</value>
+  </data>
+  <data name="ScriptEngine_Process_Patching_process_finished_Msg" xml:space="preserve">
+    <value>修补已完成！[{0}个文件已修补]</value>
+  </data>
+  <data name="ScriptEngineHelpers_ValidateScript_Software_Name_is_empty_Msg" xml:space="preserve">
+    <value>软件名为空！</value>
+  </data>
+  <data name="Patcher_GetInstruction_Instruction_not_found_Msg" xml:space="preserve">
+    <value>在偏移量{0}处找不到指令</value>
+  </data>
+  <data name="FrmScriptEditor_CheckScript_Indices_are_empty_Msg" xml:space="preserve">
+    <value>索引为空！-&gt; {0}</value>
+  </data>
+  <data name="FrmScriptEditor_CheckScript_Instructions_are_Empty_Msg" xml:space="preserve">
+    <value>指令是空的！
+目标 -&gt; {0}</value>
+  </data>
+  <data name="FrmScriptEditor_CheckScript_Patch_List_is_Empty_Msg" xml:space="preserve">
+    <value>补丁列表是空的！</value>
+  </data>
+  <data name="FrmScriptEditor_CheckScript_Placeholder_Key_is_empty_Msg" xml:space="preserve">
+    <value>占位符键为空！
+占位符值-&gt;“{0}”</value>
+  </data>
+  <data name="FrmScriptEditor_CheckScript_Target_List_is_Empty_Msg" xml:space="preserve">
+    <value>目标列表是空的！</value>
+  </data>
+  <data name="FrmScriptEditor_TsmiOpenScript_PatchName_Text" xml:space="preserve">
+    <value>补丁 {0}</value>
+  </data>
+  <data name="FrmScriptEditor_TsmiCloseScript_Message" xml:space="preserve">
+    <value>是否要在关闭脚本文件之前保存更改？</value>
+  </data>
+  <data name="FrmScriptEditor_BtnRemovePatch_Msg" xml:space="preserve">
+    <value>确定要删除“{0}”吗？</value>
+  </data>
+  <data name="FrmScriptEditor_BtnAddTargetFile_Target_File_Path_is_empty_Msg" xml:space="preserve">
+    <value>目标文件路径为空！</value>
+  </data>
+  <data name="FrmPatcherOptions_BtnSave_Software_Name_is_empty_Msg" xml:space="preserve">
+    <value>软件名为空！</value>
+  </data>
+  <data name="FrmPatcherOptions_BtnSave_Placeholder_already_exists_Msg" xml:space="preserve">
+    <value>“{0}”占位符已存在！</value>
+  </data>
+  <data name="FrmPatcherOptions_BtnSave_Patcher_Options_are_successfully_saved_Msg" xml:space="preserve">
+    <value>补丁程序选项已成功保存！</value>
+  </data>
+  <data name="FrmPatcherOptions_BtnAddPlaceholder_Placeholder_Value_is_empty_Msg" xml:space="preserve">
+    <value>占位符值为空！</value>
+  </data>
+  <data name="FrmPatcherOptions_BtnAddPlaceholder_Placeholder_Key_is_empty_Msg" xml:space="preserve">
+    <value>占位符键为空！</value>
+  </data>
+  <data name="Helpers_CreatePatcherDirIfNotExists_FileName" xml:space="preserve">
+    <value>将DNUP脚本文件移到这里！</value>
+  </data>
+  <data name="Helpers_CreatePatcherDirIfNotExists_FileContent" xml:space="preserve">
+    <value>删除我。</value>
+  </data>
+</root>
